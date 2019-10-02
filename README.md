@@ -16,3 +16,13 @@
 * Must meet good quality coding standards (indentation, scoping, naming)
 
 * Must not expose sensitive API key information on the server, see Protecting-API-Keys-In-Node.md
+
+# Bonus
+
+* Utilize Handlebars for server-side templating
+
+* Incorporate authentication (JSON Web Tokens, sessions, etc.)
+
+* Use an existing public dataset to power the database
+
+* Create a migration strategy for sharing data across team members, e.g., a seed/schema.sql file
