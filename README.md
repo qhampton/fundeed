@@ -1,9 +1,9 @@
 # project-2
-**Must use a Node and Express Web Server
+* Must use a Node and Express Web Server
 
-**Must be backed by a MySQL Database with a Sequelize ORM
+* Must be backed by a MySQL Database with a Sequelize ORM
 
-**Must have both GET and POST routes for retrieving and adding new data
+* Must have both GET and POST routes for retrieving and adding new data
 
 **Must be deployed using Heroku (with Data)
 
