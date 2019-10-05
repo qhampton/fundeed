@@ -1,10 +1,10 @@
 function getLangLat(USERZIP) {
     // document.write("Loading");
-    let url = `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${USERZIP}&key=17o8dysaCDrgv1c`;
+    var api = "https://api.promaptools.com/service/us/zip-lat-lng/get/?zip="+USERZIP+"&key=17o8dysaCDrgv1c";
     $.ajax({
-        url: url,
+        url: api,
         type: 'GET'
-    }).then(result => {
+    }).then(function(result) {
         console.log(result.output[0].latitude);
         console.log(result.output[0].longitude);
         ftnLoadPostcodes(10, result.output[0].latitude, result.output[0].longitude);
@@ -12,8 +12,8 @@ function getLangLat(USERZIP) {
 }
 
 function ftnLoadPostcodes(givenRad, lat, lng) {
-    let rn = Math.floor(Math.random() * 9999);
-    let ajaxurl = "https://cors-anywhere.herokuapp.com/https://www.freemaptools.com/ajax/us/get-all-zip-codes-inside.php";
+    var rn = Math.floor(Math.random() * 9999);
+    var ajaxurl = "https://cors-anywhere.herokuapp.com/https://www.freemaptools.com/ajax/us/get-all-zip-codes-inside.php";
     $.ajax({
         url: ajaxurl,
         type: "GET",
@@ -36,8 +36,8 @@ function ftnLoadPostcodes(givenRad, lat, lng) {
 }
 
 function sendZip(result) {
-    let zipList = [];
-    let xmarkers = result.documentElement.getElementsByTagName("postcode");
+    var zipList = [];
+    var xmarkers = result.documentElement.getElementsByTagName("postcode");
     console.log(xmarkers);
     for (var i = 0; i < xmarkers.length; i++) {
         zipList.push({ zip: xmarkers[i].getAttribute("postcode")});
@@ -50,3 +50,5 @@ function sendZip(result) {
     });
     console.log("DONE!");
 }
+
+getLangLat(92111);
