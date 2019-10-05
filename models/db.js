@@ -26,15 +26,11 @@ db.matches = require('../models/matches.js')(sequelize, Sequelize);
 db.chats = require('../models/chats.js')(sequelize, Sequelize);
 
 //Relations
-db.User.hasMany(db.Categories);
 db.User.hasMany(db.Profiles);
 db.User.hasMany(db.Matches);
 db.User.hasMany(db.Chats);
-db.Categories.hasMany(db.Profiles);
-db.Categories.belongsTo(db.User);
 db.Profiles.hasMany(db.Matches);
 db.Profiles.belongsTo(db.User);
-db.Profiles.belongsTo(db.Categories);
 db.Matches.hasOne(db.Chat);
 db.Matches.belongsTo(db.Profiles);
 db.Chats.belongsTo(db.Matches);
