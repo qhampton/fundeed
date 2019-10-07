@@ -43,7 +43,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    ziplist: DataType.ARRAY[int],
+    ziplist: DataTypes.ARRAY(DataTypes.INTEGER),
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -52,15 +52,15 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     password: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
 
     lastLogin: {
-      type: Sequelize.DATE
+      type: DataTypes.NOW
     },
     status: {
-      type: Sequelize.ENUM,
+      type: DataTypes.ENUM,
       values: ["active", "inactive"],
       defaultValue: "active"
     }
