@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Chats = sequelize.define("Chats", {
-    lastTime: DataTypes.TIMESTAMP,
+    lastTime: DataTypes.TIME,
     message: {
       type: DataTypes.TEXT,
       allowNull: false,
