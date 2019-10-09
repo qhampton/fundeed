@@ -4,7 +4,7 @@
   "description": "Project 2 Starter",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node ./bin/www",
     "lint": "./node_modules/.bin/eslint --quiet .",
     "fix": "eslint --fix .",
     "test": "npm run lint && cross-env NODE_ENV=test mocha -u bdd --reporter spec --exit"
@@ -16,7 +16,7 @@
     "express-handlebars": "^3.1.0",
     "mysql2": "^1.6.5",
     "passport": "^0.4.0",
-    "sequelize": "^5.8.6"
+    "sequelize": "^5.19.4"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -26,6 +26,11 @@
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
     "mocha": "^6.2.1",
-    "prettier": "^1.17.1"
+    "prettier": "^1.17.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
   }
 }
