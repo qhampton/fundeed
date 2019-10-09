@@ -19,9 +19,8 @@ describe("GET /api/examples", function() {
 
   it("should find all examples", function(done) {
     // Add some examples to the db to test with
-    db.Example.bulkCreate([
-      { text: "First Example", description: "First Description" },
-      { text: "Second Example", description: "Second Description" }
+    db.User.bulkCreate([
+      { id: 1, username: "test", lastName: "bob", firstName: "bob", birthdate: "1990-01-01", gender: "Male", Zipcode: 92111, searchRadius: 10, email: "bob@fuckyou.com", password: "password", lastLogin: "Never", status: "active" }, { id: 2, username: "bob", lastName: "bob", firstName: "bob", birthdate: "1990-01-01", gender: "Male", Zipcode: 92111, searchRadius: 10, email: "bob@fuckyou.com", password: "password", lastLogin: "Never", status: "active" }
     ]).then(function() {
       // Request the route that returns all examples
       request.get("/api/examples").end(function(err, res) {
@@ -42,15 +41,15 @@ describe("GET /api/examples", function() {
         expect(responseBody[0])
           .to.be.an("object")
           .that.includes({
-            text: "First Example",
-            description: "First Description"
+            id: 1,
+            username: "test"
           });
 
         expect(responseBody[1])
           .to.be.an("object")
           .that.includes({
-            text: "Second Example",
-            description: "Second Description"
+            id: 2,
+            username: "bob"
           });
 
         // The `done` function is used to end any asynchronous tests
