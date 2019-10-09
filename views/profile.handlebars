@@ -1,7 +1,43 @@
 <h1>{{user.nickname}}</h1>
 <h1>{{user.displayName}}</h1>
 <h1>{{user.user_id}}</h1>
-<h1><img src={{user.picture}}></h1>
+<h1><img src=></h1>
 <h1>{{user.nickname}}</h1>
 
 {{userProfile}}
+
+<head>
+    <link rel="stylesheet" href="/styles/style.css" media="screen" title="no title" charset="utf-8">
+    <title>{{title}}</title>
+</head>
+<div class="container">
+    <div class="col">
+        <div class="row">
+            <div class="col-mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="e-profile">
+                            <div class="row">
+                                <div class="mx-auto" style="width: 140px;">
+                                    <div class="d-flex justify-content-center align-items-center rounded">
+                                        <img class="card-img-top rounded-circle" src={{user.picture}}
+                                            style="height: 140px; width: 140px" alt="Profile Photo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                            <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.nickname}}</h4>
+                                <p class="mb-0">@PKD</p>
+                            </div>
+                            <div class="text-center text-sm-right">
+                                <div class="text-muted"><small>Joined 12 Oct 2019</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
