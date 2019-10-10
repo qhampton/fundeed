@@ -98,7 +98,6 @@ app.use('/', usersRouter);
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
-
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
   const err = new Error('Not Found');

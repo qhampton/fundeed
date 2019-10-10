@@ -7,7 +7,7 @@ var dotenv = require("dotenv");
 var util = require("util");
 var url = require("url");
 var querystring = require("querystring");
-
+var db = require("../models/index");
 dotenv.config();
 
 // Perform the login, after login Auth0 will redirect to callback
@@ -36,6 +36,14 @@ router.get("/callback", function(req, res, next) {
       }
       const returnTo = req.session.returnTo;
       delete req.session.returnTo;
+      db.User.findAll({
+        where: {
+          auth_id: user.user_id
+        }
+      }).then(function(dbUser) {
+        dbUser.length === 0 ? console.log("") : console.log("Something");
+        console.log(dbUser);
+      });
       res.redirect(returnTo || "/user");
     });
   })(req, res, next);
