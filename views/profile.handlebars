@@ -1,8 +1,8 @@
-<h1>{{user.nickname}}</h1>
+{{!-- <h1>{{user.nickname}}</h1>
 <h1>{{user.displayName}}</h1>
 <h1>{{user.user_id}}</h1>
 <h1>{{user.nickname}}</h1>
-<h1>{{test}}</h1>
+<h1>{{test2}}</h1> --}}
 
 
 <head>
@@ -10,8 +10,7 @@
     <title>{{title}}</title>
 </head>
 
- 
-    <div class="container">
+  <div class="container">
         <div class="col">
             <div class="row">
                 <div class="col mb-3">
@@ -22,22 +21,30 @@
                                     <div class="col-12 col-sm-auto mb-3">
                                         <div class="mx-auto" style="width: 140px;">
                                             <div class="d-flex justify-content-center align-items-center rounded">
-                                                <img class="card-img-top rounded-circle" src={{user.picture}}
+                                                <img class="card-img-top rounded-circle" src="{{user.picture}}"
                                                     style="height: 140px; width: 140px" alt="Profile Photo">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                         <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.nickname}}</h4>
-                                            <p class="mb-0">{{user.displayName}}</p>
-                                            
+                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.displayName}}</h4>
+                                            <p class="mb-0">{{user.nickname}}</p>
+                                            <div class="mt-2">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fa fa-fw fa-camera"></i>
+                                                    <span>Change Photo</span>
+                                                </button>
+                                            </div>
                                         </div>
                                         <div class="text-center text-sm-right">
                                             <div class="text-muted"><small>Joined 12 Oct 2019</small></div>
                                         </div>
                                     </div>
                                 </div>
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item"><a href="#" class="active nav-link">Settings</a></li>
+                                </ul>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active">
                                         <form class="form" novalidate="">
@@ -45,20 +52,26 @@
                                                 <div class="col">
                                                     <div class="row">
                                                         <div class="col">
-                                                            <div id="fullName">
-                                                                
+                                                            <div class="form-group">
+                                                                <label>Full Name</label>
+                                                                <input class="form-control" type="text" name="name"
+                                                                    placeholder={{user.displayName}} value={{user.displayName}}>
                                                             </div>
                                                         </div>
                                                         <div class="col">
-                                                            <div id="userName">
-                                                                
+                                                            <div class="form-group">
+                                                                <label>Username</label>
+                                                                <input class="form-control" type="text" name="username"
+                                                                    placeholder={{user.nickname}} value={{user.nickname}}>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <div id="email">
-                                                                
+                                                            <div class="form-group">
+                                                                <label>Email</label>
+                                                                <input class="form-control" type="text"
+                                                                    placeholder={{user.nickname}}>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,7 +87,67 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                
+                                                <div class="col-12 col-sm-6 mb-3">
+                                                    <div class="mb-2"><b>Change Password</b></div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Current Password</label>
+                                                                <input class="form-control" type="password"
+                                                                    placeholder="••••••">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>New Password</label>
+                                                                <input class="form-control" type="password"
+                                                                    placeholder="••••••">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Confirm <span
+                                                                        class="d-none d-xl-inline">Password</span></label>
+                                                                <input class="form-control" type="password"
+                                                                    placeholder="••••••"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-5 offset-sm-1 mb-3">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="custom-controls-stacked px-2">
+                                                                <div class="dropdown">
+                                                                    <button class="btn btn-secondary dropdown-toggle"
+                                                                        type="button" id="dropdownMenuButton"
+                                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                                        aria-expanded="false">
+                                                                        Interests
+                                                                    </button>
+                                                                    <div class="dropdown-menu"
+                                                                        aria-labelledby="dropdownMenuButton">
+                                                                        <a class="dropdown-item">Hiking</a>
+                                                                        <a class="dropdown-item">Music</a>
+                                                                        <a class="dropdown-item">Technology</a>
+                                                                        <a class="dropdown-item">Outdoor Sports</a>
+                                                                        <a class="dropdown-item">Dining Out</a>
+                                                                        <a class="dropdown-item">Cooking</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col d-flex justify-content-end">
+                                                        <button class="btn btn-primary" type="submit">Save
+                                                            Changes</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
