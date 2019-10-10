@@ -55,5 +55,3 @@ db.Matches.hasOne(db.Chats);
 db.Matches.belongsTo(db.Profiles);
 db.Chats.belongsTo(db.Matches);
 module.exports = db;
-
-module.exports = db;

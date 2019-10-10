@@ -7,7 +7,7 @@ var dotenv = require("dotenv");
 var util = require("util");
 var url = require("url");
 var querystring = require("querystring");
-
+var db = require("../models/index");
 dotenv.config();
 
 // Perform the login, after login Auth0 will redirect to callback
@@ -16,29 +16,34 @@ router.get(
   passport.authenticate("auth0", {
     scope: "openid email profile"
   }),
-  function (req, res) {
+  function(req, res) {
     res.redirect("/");
   }
 );
 
 // Perform the final stage of authentication and redirect to previously requested URL or '/user'
-router.get("/callback", function (req, res, next) {
-  passport.authenticate("auth0", function (err, user, info) {
+router.get("/callback", function(req, res, next) {
+  passport.authenticate("auth0", function(err, user, info) {
     if (err) {
       return next(err);
     }
     if (!user) {
       return res.redirect("/login");
     }
-    req.logIn(user, function (err) {
+    req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
-      router.post("/api/loginSuccess", function(req, res, next) {
-        
-      });
       const returnTo = req.session.returnTo;
       delete req.session.returnTo;
+      db.User.findAll({
+        where: {
+          auth_id: user.user_id
+        }
+      }).then(function(dbUser) {
+        dbUser.length === 0 ? console.log("") : console.log("Something");
+        console.log(dbUser);
+      });
       res.redirect(returnTo || "/user");
     });
   })(req, res, next);
