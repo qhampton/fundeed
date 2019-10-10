@@ -1,4 +1,5 @@
 var db = require("../models");
+var secured = require('../lib/middleware/secured');
 
 module.exports = function(app) {
   // Get all examples
@@ -7,6 +8,12 @@ module.exports = function(app) {
       res.json(dbExamples);
       console.log("log");
     });
+  });
+
+  app.post("/api/loginSuccess", secured(), function(req, res) {
+    
+    console.log("POSTING: ",)
+    // db.User.create()
   });
 
   // Create a new example
