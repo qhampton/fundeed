@@ -91,7 +91,7 @@ $(document).ready(function() {
         // Then GET NEXT PROFILE
         app.get("/api/examples", function(req, res) {
 
-            console.log("Getting Next Match...")
+            console.log("Getting Next Match...");
 
             db.User.findAll({}).then(function(profile) {
             
@@ -104,8 +104,7 @@ $(document).ready(function() {
         
         // Then Display NEXT Potential MATCH -- Update Page with new Profile Info
 
-
-
+        
   });
 
   // On User Click to Accept (Connect)
@@ -114,7 +113,7 @@ $(document).ready(function() {
         // Then GET NEXT PROFILE
         app.get("/api/examples", function(req, res) {
 
-            console.log("Getting Next Match...")
+            console.log("Getting Next Match...");
 
             db.User.findAll({}).then(function(profile) {
             
