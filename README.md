@@ -27,3 +27,5 @@
 * Use an existing public dataset to power the database
 
 * Create a migration strategy for sharing data across team members, e.g., a seed/schema.sql file
+
+* do npm start

@@ -46,12 +46,10 @@ db.profiles = require("../models/profiles.js")(sequelize, Sequelize);
 db.matches = require("../models/matches.js")(sequelize, Sequelize);
 db.chats = require("../models/chats.js")(sequelize, Sequelize);
 //Relations
-db.User.hasMany(db.Profiles);
-db.User.hasMany(db.Matches);
-db.User.hasMany(db.Chats);
-db.Profiles.hasMany(db.Matches);
-db.Profiles.belongsTo(db.User);
-db.Matches.hasOne(db.Chats);
-db.Matches.belongsTo(db.Profiles);
-db.Chats.belongsTo(db.Matches);
+db.User.hasMany(db.Profiles, {foreignKey: 'auth_id'});
+db.Profiles.hasMany(db.Matches, {foreignKey: 'profileID'});
+db.Profiles.belongsTo(db.User, {foreignKey: 'auth_id'});
+db.Matches.hasOne(db.Chats, {foreignKey: 'matchID'});
+db.Matches.belongsTo(db.Profiles, {foreignKey: 'profileID'});
+db.Chats.belongsTo(db.Matches, {foreignKey: 'matchID'});
 module.exports = db;

@@ -1,18 +1,18 @@
 module.exports = function(sequelize, DataTypes) {
   var Matches = sequelize.define("Matches", {
+    matchID: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false
+    },
     profileID1: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     profileID2: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     categoryType: {
       type: DataTypes.ENUM,

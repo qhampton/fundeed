@@ -41,7 +41,7 @@ router.get("/callback", function(req, res, next) {
           auth_id: user.user_id
         }
       }).then(function(dbUser) {
-        dbUser.length === 0 ? console.log("") : console.log("Something");
+        dbUser.length === 0 ? console.log("Pulling Data") : console.log("Something");
         console.log(dbUser);
       });
       res.redirect(returnTo || "/user");
