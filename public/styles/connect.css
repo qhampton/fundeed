@@ -1,0 +1,108 @@
+.body {
+    background: linear-gradient(to bottom, rgba(234, 83, 35, 0.3) 0%, rgba(245, 164, 137, 0.7) 0.5%, #ea5523 100%);
+
+}
+
+.wrapper {
+    background-color: #ea5523;
+}
+
+.btn {
+    background-color: #ea5523;
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Style the list (remove margins and bullets, etc) */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style the list items */
+ul li {
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+    position: relative;
+}
+
+/* Add a light grey background color on hover */
+ul li:hover {
+    background-color: #eee;
+}
+
+/* Style the close button (span) */
+.close {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    padding: 12px 16px;
+    transform: translate(0%, -50%);
+}
+
+.close:hover {
+    background: #bbb;
+}
+
+.chat {
+    list-style: none;
+    margin: 2;
+    padding: 2;
+}
+
+.chat li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li.left .chat-body {
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body {
+    margin-right: 60px;
+}
+
+
+.chat li .chat-body p {
+    margin: 0;
+    color: #777777;
+}
+
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+    margin-right: 5px;
+}
+
+.panel-body {
+    overflow-y: scroll;
+    height: 250px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}

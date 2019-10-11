@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     birthdate: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       validate: {
         len: [1]
       }
