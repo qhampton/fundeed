@@ -7,7 +7,7 @@
 
 <head>
     <link rel="stylesheet" href="/styles/style.css" media="screen" title="no title" charset="utf-8">
-    <title>{{title}}</title>
+    <title>{{msg}}</title>
 </head>
 
   <div class="container">
@@ -21,14 +21,14 @@
                                     <div class="col-12 col-sm-auto mb-3">
                                         <div class="mx-auto" style="width: 140px;">
                                             <div class="d-flex justify-content-center align-items-center rounded">
-                                                <img class="card-img-top rounded-circle" src="{{user.picture}}"
-                                                    style="height: 140px; width: 140px" alt="Profile Photo">
+                                                <img class="card-img-top rounded-circle" src={{user.picture}}
+                                                    style="height: 140px; width: 140px" alt="Profile Photo.">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                         <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.displayName}}</h4>
+                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{ourUser.email}}</h4>
                                             <p class="mb-0">{{user.nickname}}</p>
                                             <div class="mt-2">
                                                 <button class="btn btn-primary" type="button">

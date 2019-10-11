@@ -1,20 +1,18 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-// var orms = require("./config/orms.js");
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 var flash = require('connect-flash');
 var userInViews = require('./lib/middleware/userInViews');
 var authRouter = require('./routes/auth');
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-dotenv.config();
+var db = require("./models");
+var debug = require('debug')('nodejs-regular-webapp2:server');
+var http = require('http');
 
 var app = express();
 
@@ -94,7 +92,7 @@ app.use(function(req, res, next) {
 app.use(userInViews());
 app.use('/', authRouter);
 app.use('/', indexRouter);
-app.use('/', usersRouter);
+// app.use('/', usersRouter);
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
@@ -128,4 +126,108 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-module.exports = app;
+// #!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+// var app = require('../server');
+
+
+/**
+ * Get PORT from environment and store in Express.
+ */
+
+var PORT = normalizePort(process.env.PORT || '3000');
+app.set('PORT', PORT);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+var syncOptions = { force: false };
+
+// If running a test, set syncOptions.force to true
+// clearing the `testdb`
+if (process.env.NODE_ENV === "test") {
+  syncOptions.force = true;
+}
+/**
+ * Listen on provided PORT, on all network interfaces.
+ */
+// Starting the server, syncing our models ------------------------------------/
+db.sequelize.sync(syncOptions).then(function() {
+  server.listen(PORT, function() {
+    console.log(
+      "==> 🌎  Listening on PORT %s. Visit http://localhost:%s/ in your browser.",
+      PORT,
+      PORT
+    );
+  });
+});
+
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a PORT into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof PORT === 'string'
+    ? 'Pipe ' + PORT
+    : 'Port ' + PORT;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.PORT;
+  debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
+}
+module.exports = server;

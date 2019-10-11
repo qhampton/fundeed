@@ -28,6 +28,7 @@ router.get("/callback", function(req, res, next) {
       return next(err);
     }
     if (!user) {
+      console.log("Not user");
       return res.redirect("/login");
     }
     req.logIn(user, function(err) {
@@ -44,7 +45,7 @@ router.get("/callback", function(req, res, next) {
         dbUser.length === 0 ? db.User.create({ auth_id: user.user_id, email: user.displayName }).then(function(crap) { res.redirect(returnTo || "/user"); }) : res.redirect(returnTo || "/user");
       });
     });
-    console.log(req);
+    // console.log(req);
   })(req, res, next);
 });
 
