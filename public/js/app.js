@@ -1,9 +1,10 @@
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable no-unused-vars */
 //* ***************************************************************
 //
 //                        ---                                     
-//                     -        --                             
-//                 --( /     \ )XXXXXXXXXXXXX                   
+//                     -        --
+//                 --( /     \ )XXXXXXXXXXXXX
 //             --XXX(   O   O  )XXXXXXXXXXXXXXX-              
 //            /XXX(       U     )        XXXXXXX\               
 //          /XXXXX(              )--   XXXXXXXXXXX\             
@@ -25,8 +26,7 @@
 //* ***************************************************************
 
 // Run when Document is Ready
-$(document).ready(function () {
-
+$(document).ready(function() {
   // *******************
   // Global Variables
   // *******************
