@@ -2,6 +2,12 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     username: {
       type: DataTypes.STRING,
+      validate: {
+        len: [1]
+      }
+    },
+    auth_id: {
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
@@ -9,21 +15,18 @@ module.exports = function(sequelize, DataTypes) {
     },
     lastName: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         len: [1]
       }
     },
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         len: [1]
       }
     },
     birthdate: {
       type: DataTypes.DATE,
-      allowNull: false,
       validate: {
         len: [1]
       }
@@ -31,21 +34,16 @@ module.exports = function(sequelize, DataTypes) {
     gender: DataTypes.STRING,
     Zipcode: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       validate: {
         len: [1]
       }
     },
     searchRadius: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       validate: {
         len: [1]
       }
     },
-    // ziplist: {
-    //   type: DataTypes.ARRAY(DataTypes.INTEGER)
-    // },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -53,11 +51,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-
     lastLogin: {
       type: DataTypes.STRING
     },
@@ -67,6 +60,5 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: "active"
     }
   });
-
   return User;
 };
