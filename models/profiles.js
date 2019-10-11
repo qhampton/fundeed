@@ -9,6 +9,10 @@ module.exports = function(sequelize, DataTypes) {
     auth_id: {
       type: DataTypes.STRING,
       allowNull: false,
+      references: {
+        model: 'User',
+        key: 'auth_id'
+      },
       validate: {
         len: [1]
       }
@@ -40,5 +44,15 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false
     }
   });
+  console.log("Start associate");
+  Profiles.associate = function(models) {
+    console.log("in associate");
+    Profiles.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    console.log("done associate");
+  };
   return Profiles;
 };

@@ -29,5 +29,12 @@ module.exports = function(sequelize, DataTypes) {
 
     matchScore: DataTypes.INTEGER
   });
+  Matches.associate = function(models) {
+    Matches.belongsTo(models.Profiles, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Matches;
 };
