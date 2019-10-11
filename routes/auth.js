@@ -16,21 +16,21 @@ router.get(
   passport.authenticate("auth0", {
     scope: "openid email profile"
   }),
-  function (req, res) {
+  function(req, res) {
     res.redirect("/");
   }
 );
 
 // Perform the final stage of authentication and redirect to previously requested URL or '/user'
-router.get("/callback", function (req, res, next) {
-  passport.authenticate("auth0", function (err, user, info) {
+router.get("/callback", function(req, res, next) {
+  passport.authenticate("auth0", function(err, user, info) {
     if (err) {
       return next(err);
     }
     if (!user) {
       return res.redirect("/login");
     }
-    req.logIn(user, function (err) {
+    req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
@@ -40,8 +40,8 @@ router.get("/callback", function (req, res, next) {
         where: {
           auth_id: user.user_id
         }
-      }).then(function (dbUser) {
-        dbUser.length === 0 ? db.User.create({ auth_id: user.user_id, email: user.displayName }).then(function (crap) { res.redirect(returnTo || "/user"); }) : res.redirect(returnTo || "/user");
+      }).then(function(dbUser) {
+        dbUser.length === 0 ? db.User.create({ auth_id: user.user_id, email: user.displayName }).then(function(crap) { res.redirect(returnTo || "/user"); }) : res.redirect(returnTo || "/user");
       });
     });
     console.log(req);
