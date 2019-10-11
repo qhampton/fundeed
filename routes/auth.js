@@ -41,11 +41,10 @@ router.get("/callback", function(req, res, next) {
           auth_id: user.user_id
         }
       }).then(function(dbUser) {
-        dbUser.length === 0 ? console.log("") : console.log("Something");
-        console.log(dbUser);
+        dbUser.length === 0 ? db.User.create({ auth_id: user.user_id, email: user.displayName }).then(function(crap) { res.redirect(returnTo || "/user"); }) : res.redirect(returnTo || "/user");
       });
-      res.redirect(returnTo || "/user");
     });
+    console.log(req);
   })(req, res, next);
 });
 
