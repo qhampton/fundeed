@@ -1,6 +1,8 @@
+/* eslint-disable no-unreachable */
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var session = require("express-session");
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -92,7 +94,7 @@ app.use(function(req, res, next) {
 app.use(userInViews());
 app.use('/', authRouter);
 app.use('/', indexRouter);
-// app.use('/', usersRouter);
+
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
@@ -132,8 +134,6 @@ app.use(function(err, req, res, next) {
  * Module dependencies.
  */
 // var app = require('../server');
-
-
 /**
  * Get PORT from environment and store in Express.
  */

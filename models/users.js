@@ -31,8 +31,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    gender: DataTypes.STRING,
-    Zipcode: {
+    zipcode: {
       type: DataTypes.INTEGER,
       validate: {
         len: [1]
@@ -44,6 +43,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    ziplist: DataTypes.STRING,
     email: {
       type: DataTypes.STRING,
       allowNull: false,
