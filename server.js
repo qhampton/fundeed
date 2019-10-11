@@ -1,7 +1,6 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-// var orms = require("./config/orms.js");
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -14,6 +13,7 @@ var userInViews = require('./lib/middleware/userInViews');
 var authRouter = require('./routes/auth');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
 dotenv.config();
 
 var app = express();
