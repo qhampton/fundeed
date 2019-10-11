@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/connect.css" media="screen" title="no title" charset="utf-8">
+    <title>Connect</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <article class="card-body">
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <div class="form-group">
+                                        <label id="userName"> </label>
+                                        <textarea class="form-control" rows="5" placeholder="Bio"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="mt-2">
+                                    <button class="btn btn-primary" id="connectBttn" type="button">
+                                        <i class="fa fa-fw fa-camera"></i>
+                                        <span>Connect</span>
+                                    </button>
+                                </div>
+                                <div class="mt-2">
+                                    <button class="btn btn-primary" id="passBttn" type="button">
+                                        <i class="fa fa-fw fa-camera"></i>
+                                        <span> Pass</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="card">
+                        <article class="card-body">
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <h3>Matches</h3>
+                                    <ul>
+                                        <li>Tom<span class="close">x</span></li>
+                                        <li>Dick<span class="close">x</span></li>
+                                        <li>Harry<span class="close">x</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="card">
+                        <article class="card-body">
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading" id="accordion">
+                                                    <span class="glyphicon glyphicon-comment"></span> Chat
+                                                    <div class="btn-group pull-right">
+                                                        <a type="button" class="btn btn-default btn-xs"
+                                                            data-toggle="collapse" data-parent="#accordion"
+                                                            href="#collapseOne">
+                                                            <span class="glyphicon glyphicon-chevron-down"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseOne">
+                                                    <div class="panel-body">
+                                                        <ul class="chat">
+                                                            <li class="left clearfix"><span class="chat-img pull-left">
+                                                                    <img src="http://placehold.it/50/55C1E7/fff&text=U"
+                                                                        alt="User Avatar" class="img-circle" />
+                                                                </span>
+                                                                <div class="chat-body clearfix">
+                                                                    <div class="header">
+                                                                        <strong class="primary-font">Jack
+                                                                            Sparrow</strong> <small
+                                                                            class="pull-right text-muted">
+                                                                            <span
+                                                                                class="glyphicon glyphicon-time"></span>12
+                                                                            mins
+                                                                            ago</small>
+                                                                    </div>
+                                                                    <p>
+                                                                        Lorem ipsum dolor sit amet, consectetur
+                                                                        adipiscing elit.
+                                                                        Curabitur bibendum ornare
+                                                                        dolor, quis ullamcorper ligula sodales.
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="right clearfix"><span
+                                                                    class="chat-img pull-right">
+                                                                    <img src="http://placehold.it/50/FA6F57/fff&text=ME"
+                                                                        alt="User Avatar" class="img-circle" />
+                                                                </span>
+                                                                <div class="chat-body clearfix">
+                                                                    <div class="header">
+                                                                        <small class=" text-muted"><span
+                                                                                class="glyphicon glyphicon-time"></span>13
+                                                                            mins
+                                                                            ago</small>
+                                                                        <strong class="pull-right primary-font">Bhaumik
+                                                                            Patel</strong>
+                                                                    </div>
+                                                                    <p>
+                                                                        Lorem ipsum dolor sit amet, consectetur
+                                                                        adipiscing elit.
+                                                                        Curabitur bibendum ornare
+                                                                        dolor, quis ullamcorper ligula sodales.
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="left clearfix"><span class="chat-img pull-left">
+                                                                    <img src="http://placehold.it/50/55C1E7/fff&text=U"
+                                                                        alt="User Avatar" class="img-circle" />
+                                                                </span>
+                                                                <div class="chat-body clearfix">
+                                                                    <div class="header">
+                                                                        <strong class="primary-font">Jack
+                                                                            Sparrow</strong> <small
+                                                                            class="pull-right text-muted">
+                                                                            <span
+                                                                                class="glyphicon glyphicon-time"></span>14
+                                                                            mins
+                                                                            ago</small>
+                                                                    </div>
+                                                                    <p>
+                                                                        Lorem ipsum dolor sit amet, consectetur
+                                                                        adipiscing elit.
+                                                                        Curabitur bibendum ornare
+                                                                        dolor, quis ullamcorper ligula sodales.
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="right clearfix"><span
+                                                                    class="chat-img pull-right">
+                                                                    <img src="http://placehold.it/50/FA6F57/fff&text=ME"
+                                                                        alt="User Avatar" class="img-circle" />
+                                                                </span>
+                                                                <div class="chat-body clearfix">
+                                                                    <div class="header">
+                                                                        <small class=" text-muted"><span
+                                                                                class="glyphicon glyphicon-time"></span>15
+                                                                            mins
+                                                                            ago</small>
+                                                                        <strong class="pull-right primary-font">Bhaumik
+                                                                            Patel</strong>
+                                                                    </div>
+                                                                    <p>
+                                                                        Lorem ipsum dolor sit amet, consectetur
+                                                                        adipiscing elit.
+                                                                        Curabitur bibendum ornare
+                                                                        dolor, quis ullamcorper ligula sodales.
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="panel-footer">
+                                                        <div class="input-group">
+                                                            <input id="btn-input" type="text"
+                                                                class="form-control input-sm"
+                                                                placeholder="Type your message here..." />
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                                                    Send</button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="page-footer font-small black pt-4">
+            <div class="footer-copwright text-center py-3">
+                Copyright &copy; FunDeed 2019
+            </div>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
