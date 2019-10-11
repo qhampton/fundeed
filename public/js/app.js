@@ -32,22 +32,15 @@ console.log(
 //* ***************************************************************
 );
 
-
 // Run when Document is Ready
 $(document).ready(function() {
 
     console.log("Document is Ready...");
-    
-    // *******************
-    // Global Variables
-    // *******************
-
-
 
     // *******************
     // User Swipe Functionality
     // *******************
-
+    
     // On User Click to Accept (Connect)
     $('#connectBttn').on("click", function() {
     
@@ -55,77 +48,87 @@ $(document).ready(function() {
         var currentUser = ""; // Logged in User
         var connectedUser = ""; // The OTHER User who was matched with
 
-        // Check Server to see if there is a Current MATCH record
-        app.get("/api/matches", function(req, res) {
+         // Performing our AJAX GET request
+        $.ajax({
+            url: "",
+            method: "GET"
+        }).then(function(response) {
 
-            console.log("attemptign to find match record...");
+            var results = response.data;
 
-            db.User.findAll({}).then(function(matches) {
-                res.json(matches);
-                console.log(matches);
-            });
+            console.log(results);
 
-            // Determine if there are any MATCH Records
-            if (matches === 0) {
-                
-                // If there is a MATCH record - Update Match Record
-                console.log("Updating Match Record...");
-                
-                app.put("/api/matches/:id", secured(), function(req, res) {
-                    console.log("Updating Match Record...");
+            // Determine if there is a MATCH record
+            if (results === 0) {
+
+                // If there is NO RESULTS -- i.e MATCHES
+                console.log("Creating a new Match Record...");
+
+                $.ajax({
+                    url: "",
+                    method: "PUT"
+                }).then(function(response) {
+                    
+                    console.log("Match Record Created...");
+                    console.log(response);
 
                 });
 
             } else {
 
-                // If there is NOT a Match record - Create a Match Record
-                console.log("Creating a new Match Record...");
+                // If there is a RESULT -- i.e MATCH
+                console.log("Updating existing Match Record...");
 
-                app.post("/api/matches", secured(), function(req, res) {
-                    console.log("POSTING NEW Match Record ");
+                $.ajax({
+                    url: "",
+                    method: "POST"
+                }).then(function(response) {
+                    
+                    console.log("Match Record Updated...");
+                    console.log(response);
 
-                  });
-            }
+                });
+
+            } // END ELSE STATEMENT
         });
+
+        // GRAB NEW USER
+
+        console.log("Getting new Potential Profile...");
+    
+        $.ajax({
+            url: "",
+            method: "GET"
+        }).then(function(response) {
             
-        // Then GET NEXT PROFILE
-        app.get("/api/examples", function(req, res) {
+            console.log("New Profile Found...");
+            console.log(response);
 
-            console.log("Getting Next Match...");
+            // Take response and Post to Page
 
-            db.User.findAll({}).then(function(profile) {
-            
-                console.log(profile);
-
-              res.json(profile);
-
-            });
         });
-        
-        // Then Display NEXT Potential MATCH -- Update Page with new Profile Info
-
-        
-  });
+      
+    });
 
   // On User Click to Accept (Connect)
   $('#passBttn').on("click", function() {
 
-        // Then GET NEXT PROFILE
-        app.get("/api/examples", function(req, res) {
+        // GRAB NEW USER
 
-            console.log("Getting Next Match...");
-
-            db.User.findAll({}).then(function(profile) {
+        console.log("Getting new Potential Profile...");
+    
+        $.ajax({
+            url: "",
+            method: "GET"
+        }).then(function(response) {
             
-                console.log(profile);
+            console.log("New Profile Found...");
+            console.log(response);
 
-              res.json(profile);
+            // Take response and Post to Page
 
-            });
         });
-        
-        // Then Display NEXT Potential MATCH -- Update Page with new Profile Info
 
-  });
+    });
 // END
 });
