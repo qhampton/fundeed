@@ -48,7 +48,8 @@ function updateProfile(event) {
             searchRadius,
             birthdate,
             zipcode,
-            email
+            email,
+            bio
         }
     }).then(function (result) {
         console.log("Success: ", result);
