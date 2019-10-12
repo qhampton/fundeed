@@ -110,7 +110,7 @@
                                                             <div class="form-group">
                                                                 <label>About</label>
                                                                 <textarea id="bio" class="form-control" rows="5"
-                                                                    placeholder="My Bio"></textarea>
+                                                                    placeholder={{ourUser.bio}}></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -217,7 +217,8 @@
                 searchRadius,
                 birthdate,
                 zipcode,
-                email
+                email,
+                bio
             }
         }).then(function(result){
             console.log("Success: ", result);

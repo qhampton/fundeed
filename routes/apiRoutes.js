@@ -5,16 +5,52 @@ dotenv.config();
 module.exports = function(app) {
   // Get User Data
   app.get("/api/user", function(req, res) {
-    db.User.findAll({where: {auth_id: req.user.id}}).then(function(dbExamples) {
+    db.User.findAll({ where: { auth_id: req.user.id } }).then(function(dbExamples) {
       res.json(dbExamples[0]);
       console.log("log");
     });
   });
 
-  // app.get("/api/matches", function(req, res) {
-  //   let userID = req.user.id;
+  app.get("/api/matches", function(req, res) {
+    console.log("Getting matches");
+    db.Matches.findAll({
+      where: {
+        profileID1: req.query.auth_id,
+        profileID2: req.user.id
+      }
+    }).then(function(reply) {
+      console.log("Found :", reply);
+      res.json(reply);
+    }).catch(function(err) {
+      console.log(err);
+    });
+  });
 
-  // });
+  app.put("/api/matches", function(req, res) {
+    let matchId = req.body.id;
+    console.log("PUTTING");
+    db.Matches.update({
+      Success: true
+    }, {
+      where: {
+        id: matchId
+      }
+    }).then(function(reply) {
+      res.json(reply);
+    });
+  });
+
+  app.post("/api/matches", function(req, res) {
+    let userID = req.user.id;
+    let matchID = req.body.auth_id;
+    db.Matches.create({
+      profileID1: userID,
+      profileID2: matchID,
+      matching: true
+    }).then(function(reply) {
+      res.json(reply);
+    });
+  });
 
   // app.get("/api/chat", function(req, res) {
 
@@ -43,6 +79,7 @@ module.exports = function(app) {
       firstName: req.body.firstName,
       birthdate: req.body.birthdate,
       email: req.body.email,
+      bio: req.body.bio,
       zipcode: parseInt(req.body.zipcode),
       searchRadius: parseInt(req.body.searchRadius)
     }, {
