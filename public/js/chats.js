@@ -28,25 +28,44 @@ console.log(
     //* ***************************************************************
 );
 
-function testChatPost() {
-    console.log("attempting chat post");
+/* eslint-disable */
 
+// Grab Users Successful Matches
+function getMatches() {
+    console.log("Getting Chats...");
     $.ajax({
         type: 'GET',
-        url: "/api/user"
-    }).then(function (reply) {
-        console.log("Reply: ", reply);
-        $.ajax({
-            type: 'POST',
-            url: "/api/chat",
-            data: {
-                user: reply.firstName + " " + reply.lastName,
-                message: "Ayo does this work?"
+        url: "/api/chats",
+        data: {
+            id
+        }
+    }).then(function(result){
+        console.log("Success: ", result);
+            // On success display matches
+
+            // Loop through Matches
+            for(i=0; i<result.length; i++){
+
+                // Grab Chat Information
+                var comment = result[i].comment;
+
+                // Create Match Div
+                var div = $("div");
+                
+                // Define Name Tag
+                var comments = $("<h6>"+ comment + "</h6>");
+
+                // Append H1 with Match Name
+                div.append(comments);
+
+                // Display Match Div
+                $('#chats').append(div);
+
             }
-        }).then(function (result) {
-            console.log("Success: ", result);
-        }).catch(function (err) {
-            console.log("Error: ", err);
-        });
+
+    }).catch(function(err){
+
+        console.log("Error: ",err);
+
     });
 }
