@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    match: {
+    matching: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
