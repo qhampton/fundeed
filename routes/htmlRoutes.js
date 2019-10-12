@@ -24,9 +24,19 @@ module.exports = function(app) {
     res.render("matches");
   });
 
-  app.get("/chat", function(req, res) {
-    console.log("hello?");
-    res.render("chats");
+  app.get("/chat/:id", function(req, res) {
+    let id = req.params.id;
+    db.Chats.findAll({
+      where: {
+        MatchId: id
+      }
+    }).then(function(content) {
+      console.log(content);
+      res.render("chats", {
+        content,
+        matches: id
+      });
+    });
   });
 
   // // Load example page and pass in an example by id

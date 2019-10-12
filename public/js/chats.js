@@ -1,4 +1,3 @@
-
 /* eslint-disable */
 
 console.log(
@@ -29,18 +28,43 @@ console.log(
 );
 
 /* eslint-disable */
-
+function postChat(message){
+    let id = $("#secret").attr("matches");
+    $.ajax({
+        type: 'GET',
+        url: "/api/user"
+    }).then(function (reply) {
+        let name = reply.firstName;
+        $.ajax({
+            type: 'POST',
+            url: 'api/chat',
+            data: {
+                user: name,
+                message,
+                MatchId: id
+            }
+        }).then(function(reply){
+            console.log(reply);
+        });
+    });
+}
 // Grab Users Successful Matches
 function getMatches() {
     console.log("Getting Chats...");
     $.ajax({
         type: 'GET',
-        url: "/api/chats",
-        data: {
-            id
-        }
+        url: "/api/matches/success",
     }).then(function(result){
-        console.log("Success: ", result);
+        let idList = [];
+        result.forEach(function(content){
+            idList.push(content.id);
+        });
+        console.log("Success: ",idList);
+        $.ajax({
+            type: 'GET',
+            url: '/api/chats',
+            
+        })
             // On success display matches
 
             // Loop through Matches
