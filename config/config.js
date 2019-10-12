@@ -26,7 +26,11 @@ module.exports = {
   },
   production: {
     // eslint-disable-next-line camelcase
-    use_env_variable: "JAWSDB_URL",
-    dialect: "mysql"
+    username: "llqf4p8wo3jks59u",
+    password: process.env.DB_PASSWORD,
+    database: "ankkiy0ses6qwn9h",
+    host: "lyl3nln24eqcxxot.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    dialect: "mysql",
+    port: "3306"
   }
 };
