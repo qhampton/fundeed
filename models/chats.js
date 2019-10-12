@@ -1,12 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Chats = sequelize.define("Chats", {
-    auth_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
     user: {
       type: DataTypes.STRING,
       allowNull: false

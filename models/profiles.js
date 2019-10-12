@@ -1,12 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Profiles = sequelize.define("Profiles", {
-    auth_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
     categoryType: {
       type: DataTypes.STRING,
       validate: {

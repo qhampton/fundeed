@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     auth_id: {
       type: DataTypes.STRING,
+      primaryKey: true,
       allowNull: false,
       validate: {
         len: [1]
@@ -50,6 +51,11 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
+    },
+    bio: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      len: [1]
     },
     lastLogin: {
       type: DataTypes.STRING
