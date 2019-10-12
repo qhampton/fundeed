@@ -8,6 +8,14 @@ module.exports = {
     dialect: "mysql",
     port: "3306"
   },
+  // development: {
+  //   username: "root",
+  //   password: process.env.DB_PASSWORD,
+  //   database: "project2db",
+  //   host: "localhost",
+  //   dialect: "mysql",
+  //   port: "3306"
+  // },
   test: {
     username: "root",
     password: "Yakusoku1!",
