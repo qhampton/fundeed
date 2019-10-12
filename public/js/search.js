@@ -128,7 +128,8 @@ $("#connectBtn").on("click", function(){
                 type: 'POST',
                 url: '/api/matches',
                 data:{
-                    auth_id: $("#bio").attr('user-id')
+                    auth_id: $("#bio").attr('user-id'),
+                    name: allUsers[0].firstName
                 }
             }).then(function(reply){
                 console.log("Created", reply);

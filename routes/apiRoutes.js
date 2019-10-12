@@ -43,10 +43,12 @@ module.exports = function(app) {
   app.post("/api/matches", function(req, res) {
     let userID = req.user.id;
     let matchID = req.body.auth_id;
+    let name = req.body.name;
     db.Matches.create({
       profileID1: userID,
       profileID2: matchID,
-      matching: true
+      matching: true,
+      profileID: name
     }).then(function(reply) {
       res.json(reply);
     });
@@ -106,6 +108,29 @@ module.exports = function(app) {
       res.json(allUsers);
     }).catch(function(err) {
       console.log(err);
+    });
+  });
+  app.get("/api/matches/success", function(req, res) {
+    console.log("Getting matches");
+    db.Matches.findAll({
+      where: {
+        Success: true,
+        profileID1: req.user.id
+      }
+    }).then(function(reply) {
+      console.log(reply);
+      console.log("pt2");
+      db.Matches.findAll({
+        where: {
+          Success: true,
+          profileID2: req.user.id
+        }
+      }).then(function(reply) {
+        console.log("Found :", reply);
+        res.json(reply);
+      }).catch(function(err) {
+        console.log(err);
+      });
     });
   });
 };
