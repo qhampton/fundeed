@@ -12,6 +12,10 @@ module.exports = function(app) {
       });
     });
   });
+  app.get("/chat", function(req, res) {
+    console.log("hello?");
+    res.render("chats");
+  });
 
   // // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {

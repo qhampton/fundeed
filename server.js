@@ -151,6 +151,21 @@ if (process.env.NODE_ENV === "test") {
  */
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
+  // Models/tables
+  console.log("START");
+  // Relations
+  db.User.hasMany(db.Profiles, { foreignKey: 'auth_id' });
+  console.log("4");
+  db.Profiles.hasMany(db.Matches, { foreignKey: 'profileID' });
+  console.log("5");
+  db.Profiles.belongsTo(db.User, { foreignKey: 'auth_id' });
+  console.log("6");
+  db.Matches.hasOne(db.Chats, { foreignKey: 'matchID' });
+  console.log("7");
+  db.Matches.belongsTo(db.Profiles, { foreignKey: 'profileID' });
+  console.log("8");
+  db.Chats.belongsTo(db.Matches, { foreignKey: 'matchID' });
+
   server.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on PORT %s. Visit http://localhost:%s/ in your browser.",

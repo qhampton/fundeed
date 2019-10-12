@@ -30,15 +30,12 @@ module.exports = function(sequelize, DataTypes) {
     //   len: [1]
     // }
   });
-  console.log("Start associate");
   Profiles.associate = function(models) {
-    console.log("in associate");
     Profiles.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
-    console.log("done associate");
   };
   return Profiles;
 };
