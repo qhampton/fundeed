@@ -26,15 +26,18 @@ router.get(
 router.get("/callback", function(req, res, next) {
   passport.authenticate("auth0", function(err, user, info) {
     if (err) {
+      console.log("HEROKY");
       return next(err);
     }
     if (!user) {
+      console.log(user);
       return res.redirect("/login");
     }
     req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
+      console.log("Let's do this");
       const returnTo = req.session.returnTo;
       delete req.session.returnTo;
       db.User.findAll({
@@ -42,7 +45,7 @@ router.get("/callback", function(req, res, next) {
           auth_id: user.user_id
         }
       }).then(function(dbUser) {
-        // console.log("USER:", dbUser);
+        console.log("USER:", dbUser);
         dbUser.length === 0 ? db.User.create({ auth_id: user.user_id, email: user.displayName }).then(function(crap) { res.redirect(returnTo || "/user"); }) : res.redirect(returnTo || "/user");
       });
     });
