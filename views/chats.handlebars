@@ -1,0 +1,20 @@
+   <a class="nav-link js-scroll-trigger" onclick="testChatPost()">Sign Up</a>
+                
+
+
+<script>
+    function testChatPost() {
+        console.log("attempting chat post");
+        $.ajax({
+            type: 'POST',
+            url: "/api/chat",
+            data:{
+                message: "Ayo does this work?"
+            }
+        }).then(function(result){
+            console.log("Success: ", result);
+        }).catch(function(err){
+            console.log("Error: ",err);
+        })
+    }
+</script>

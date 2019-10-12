@@ -40,5 +40,12 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false
     }
   });
+  Profiles.associate = function(models) {
+    Profiles.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Profiles;
 };

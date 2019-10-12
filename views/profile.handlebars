@@ -10,7 +10,8 @@
     <title>{{msg}}</title>
 </head>
 
-  <div class="container">
+ <div class="wrapper">
+    <div class="container">
         <div class="col">
             <div class="row">
                 <div class="col mb-3">
@@ -21,15 +22,15 @@
                                     <div class="col-12 col-sm-auto mb-3">
                                         <div class="mx-auto" style="width: 140px;">
                                             <div class="d-flex justify-content-center align-items-center rounded">
-                                                <img class="card-img-top rounded-circle" src={{user.picture}}
-                                                    style="height: 140px; width: 140px" alt="Profile Photo.">
+                                                <img class="card-img-top rounded-circle" src="../styles/images/pkd.jpeg"
+                                                    style="height: 140px; width: 140px" alt="Profile Photo">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                         <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{ourUser.email}}</h4>
-                                            <p class="mb-0">{{user.nickname}}</p>
+                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{ourUser.firstName}} {{ourUser.lastName}}</h4>
+                                            <p class="mb-0">{{user.displayName}}</p>
                                             <div class="mt-2">
                                                 <button class="btn btn-primary" type="button">
                                                     <i class="fa fa-fw fa-camera"></i>
@@ -53,25 +54,46 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label>Full Name</label>
-                                                                <input class="form-control" type="text" name="name"
-                                                                    placeholder={{user.displayName}} value={{user.displayName}}>
+                                                                <label>First Name</label>
+                                                                <input class="form-control" type="text" name="fisrtName"
+                                                                    placeholder={{ourUser.firstName}} value={{ourUser.firstName}}>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Last Name</label>
+                                                                <input class="form-control" type="text" name="lastName"
+                                                                    placeholder={{ourUser.lastName}} value={{ourUser.lastName}}>
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Username</label>
-                                                                <input class="form-control" type="text" name="username"
-                                                                    placeholder={{user.nickname}} value={{user.nickname}}>
+                                                                <input class="form-control" type="text" name="userName"
+                                                                    placeholder={{user.displayName}} value={{user.displayName}}>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label>Date of Birth</label>
+                                                                <input type="date" class="form-control" id="exampleInputDOB1" placeholder="Date of Birth">
+                                                              </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Email</label>
-                                                                <input class="form-control" type="text"
-                                                                    placeholder={{user.nickname}}>
+                                                                <input class="form-control" type="text" name="email"
+                                                                    placeholder={{user.displayName}}>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Zip Code</label>
+                                                            <input class="form-control" type="text" name="zipCode"
+                                                                placeholder={{ourUser.zipcode}}>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label>Radius</label>
+                                                                <input class="form-control" type="text" name="Radius"
+                                                                    placeholder={{ourUser.searchRadius}}>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -130,12 +152,13 @@
                                                                     </button>
                                                                     <div class="dropdown-menu"
                                                                         aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item">Hiking</a>
-                                                                        <a class="dropdown-item">Music</a>
                                                                         <a class="dropdown-item">Technology</a>
-                                                                        <a class="dropdown-item">Outdoor Sports</a>
-                                                                        <a class="dropdown-item">Dining Out</a>
-                                                                        <a class="dropdown-item">Cooking</a>
+                                                                        <a class="dropdown-item">Outdoor Activities</a>
+                                                                        <a class="dropdown-item">Indoor Activities</a>
+                                                                        <a class="dropdown-item">Photography</a>
+                                                                        <a class="dropdown-item">Food</a>
+                                                                        <a class="dropdown-item">Nightlife</a>
+                                                                        <a class="dropdown-item">Music</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -159,3 +182,8 @@
             </div>
         </div>
     </div>
+    <footer class="page-footer font-small black pt-4">
+            <div class="footer-copwright text-center py-3">
+                Copyright &copy; FunDeed 2019
+            </div>
+        </footer>

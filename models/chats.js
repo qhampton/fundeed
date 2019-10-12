@@ -1,13 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   var Chats = sequelize.define("Chats", {
-    chatID: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-      allowNull: false
-    },
     matchID: {
       type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    user: {
+      type: DataTypes.STRING,
       allowNull: false
     },
     lastTime: DataTypes.TIME,
@@ -17,5 +15,13 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     }
   });
+
+  Chats.associate = function(models) {
+    Chats.belongsTo(models.Matches, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Chats;
 };

@@ -31,12 +31,22 @@ module.exports = function(app) {
   });
 
   // bring all chats
-  app.get("/api/matches/:id", function(req, res) {
+  app.get("/api/matches/", function(req, res) {
     db.Chats.findAll({
       where: {
-        message: req.param.id,
-        lastTime: req.param.id
-      },
+        matchID: req.user.id
+      }
+      // ,include: [db.matches]
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+  app.post("/api/chat/", function(req, res) {
+    db.Chats.create({
+      chatID: 1,
+      matchID: 666,
+      lastTime: Date.now(),
+      message: req.body.message,
       include: [db.matches]
     }).then(function(dbUser) {
       res.json(dbUser);
