@@ -4,44 +4,53 @@ dotenv.config();
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
+  app.get("/examples", function(req, res) {
     db.User.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
       console.log("log");
     });
   });
-  // all user profiles with search criteria
-  app.get("/users/matches", function(req, res) {
-    db.User.findAll().then(function(dbUser) {
-      console.log(dbUser);
-      res.json(dbUser);
-    });
-  });
-
-  // all profiles matched
-  app.get("/profiles/:id", function(req, res) {
-    db.Profiles.findAll({
+  // all user profiles with search criteria -doesn't work
+  app.get("/users/profile", function(req, res) {
+    db.User.findAll({
       where: {
-        matchscore: true
+        id: req.params.auth_id
       },
-      include: [dbUser]
+      include: [db.Profiles]
     }).then(function(dbProfile) {
+      console.log(dbProfile);
       res.json(dbProfile);
     });
   });
 
-  // bring all chats
-  app.get("/api/matches/", function(req, res) {
+  // all profiles matched - doesn't work
+  app.get("/profiles/matches", function(req, res) {
+    db.Profiles.findAll({
+      where: {
+        matchscore: true
+      },
+      include: [dbMatches]
+    }).then(function(dbMatches) {
+      res.json(dbMatches);
+      console.log(dbMatches);
+    });
+  });
+
+  // bring all chats -doesn't work
+  app.get("/matches/chat", function(req, res) {
     db.Chats.findAll({
       where: {
         matchID: req.user.id
       }
       // ,include: [db.matches]
-    }).then(function(dbUser) {
-      res.json(dbUser);
+    }).then(function(dbChats) {
+      res.json(dbChats);
+      console.log(dbChats);
+
     });
   });
-  app.post("/api/chat/", function(req, res) {
+
+  app.post("/chat", function(req, res) {
     db.Chats.create({
       chatID: 1,
       matchID: 666,
@@ -53,23 +62,8 @@ module.exports = function(app) {
     });
   });
 
-  // POST route for saving auth
-  // Andres - Not sure if we need this, since Auth.js creates on blank return of ID search
-  app.post("/api/new", function(req, res) {
-    console.log("User Data:");
-    console.log(req.body);
-
-    var dbQuery = "INSERT INTO User (username, email) VALUES (?,?)";
-
-    connection.query(dbQuery, [req.body.username, req.body.email], function(err, result) {
-      if (err) throw err;
-      console.log("User Credentials Successfully Saved!");
-      res.end();
-    });
-  });
-
-  // more user details saved
-  app.put("/api/userAccount", function(req, res) {
+  // more user details saved 
+  app.put("/userAccount", function(req, res) {
     // console.log(req.body);
     console.log(" More User Data:", req.user.id);
     // console.log(req.user);
@@ -92,8 +86,8 @@ module.exports = function(app) {
     // });
   });
 
-  // specific category profile
-  app.post("/api/profile", function(req, res) {
+  // specific category profile -doesn't work
+  app.post("/new/profile", function(req, res) {
     console.log(" More User Data:");
     console.log(req.body);
 
