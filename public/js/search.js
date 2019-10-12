@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+let allUsers = [];
 // Zip Function
 function getLangLat(USERZIP, RADIUS) {
     var api =
@@ -55,9 +55,11 @@ function allZips(ziplist) {
         }
     }).then(function(result){
         console.log("Success: ", result);
+        allUsers = result;
+        check();
     }).catch(function(err){
         console.log("Error: ",err);
-    })
+    });
 };
 
 // When Document Loads -- Find Users within the requested Zip Code Ran
@@ -78,5 +80,10 @@ $(document).ready(function () {
         //Get Zipcode Function
         getLangLat(reply.zipcode, reply.searchRadius);
     });
-
 });
+
+// function check(){
+//     console.log("Global Array", allUsers);
+// }
+
+// function 

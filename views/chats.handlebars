@@ -13,7 +13,7 @@
             console.log("Reply: ", reply);
             $.ajax({
                 type: 'POST',
-                url: "/api/chat",
+                url: "/chat",
                 data: {
                     user: reply.firstName + " " + reply.lastName,
                     message: "Ayo does this work?"

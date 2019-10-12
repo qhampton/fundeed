@@ -43,15 +43,9 @@ function sendZip(result) {
   var xmarkers = result.documentElement.getElementsByTagName("postcode");
   console.log(xmarkers);
   for (var i = 0; i < xmarkers.length; i++) {
-    zipList.push({ zip: xmarkers[i].getAttribute("postcode") });
+    zipList.push(xmarkers[i].getAttribute("postcode"));
   }
   console.log(zipList);
-  $.ajax({
-    url: "/testing",
-    type: "POST",
-    data: zipList
-  });
-  console.log("DONE!");
 }
 
 getLangLat(92111);
