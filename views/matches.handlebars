@@ -1,41 +1,78 @@
 <head>
     <link rel="stylesheet" href="/styles/style.css" media="screen" title="no title" charset="utf-8">
-    <title></title>
+    <title>Matches Page</title>
 </head>
 
-{{!-- Navigation --}}
-<ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="/user">Profile</a>
-  </li>
-</ul>
+{{!-- Navbar --}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/user">Fundeed</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
 
-{{!-- Jumbotron --}}
-<div class="jumbotron jumbotron-fluid">
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link" href="/user">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/search">Connect <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/matches">Matches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">logout</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+{{!-- Add Break --}}
+<br><br>
+
+{{!-- Framework --}}
+<div class="wrapper">
     <div class="container">
-        <h1 class="display-4" style="align-content: center;">Matches</h1>
-        <p class="lead">Here are your Matches</p>
-    </div>
-</div>
+        <div class="col">
+            <div class="row">
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body" class="pageBody">
 
-<div class="container">
-    <div class="row">
-        {{!-- Side --}}
-        <div class="col-sm-2"></div>
-        {{!-- Content --}}
-        <div class="col-sm-8">
-            {{!-- HERE WE DYNAMICALLY CREATE QUERIED MATCHES --}}
+                            {{!-- Jumbotron --}}
+                            <div class="jumbotron jumbotron-fluid" style="max-height: 15em;">
+                                <div class="container">
+                                    <h1 class="display-4" style="text-align: center;">Matches</h1>
+                                    <p class="lead" style="text-align: center;">Congrats! Here is a full list of your current Matches!</p>
+                                </div>
+                            </div>
+                            {{!-- End Jumbotron --}}
 
-            <div class="container">
-                <div class="row" id="matches">
+                            {{!-- Matches --}}
+                            <div class="container">
+                                <div class="row">
+                                    {{!-- Content --}}
+                                    <div class="col-sm-12">
+                                        {{!-- HERE WE DYNAMICALLY CREATE QUERIED MATCHES --}}
+                                        <div class="container">
+                                            <div class="row" id="matches">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{!--END Matches  --}}
+
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
-        {{!-- Side --}}
-        <div class="col-sm-2"></div>
     </div>
 </div>
+{{!-- End Framework --}}
+
+
 
 <footer class="page-footer font-small black pt-4">
     <div class="footer-copwright text-center py-3">

@@ -31,8 +31,8 @@ console.log(
 // Update User Profile Function
 function updateProfile(event) {
     let birthdate = $("#birthdate").val();
-    let firstName = $("#first").val();
-    let lastName = $("#last").val();
+    let firstName = $("#firstName").val();
+    let lastName = $("#lastName").val();
     let email = $("#email").val();
     let username = $("#username").val();
     let zipcode = $("#zip").val();
@@ -48,7 +48,8 @@ function updateProfile(event) {
             searchRadius,
             birthdate,
             zipcode,
-            email
+            email,
+            bio
         }
     }).then(function (result) {
         console.log("Success: ", result);
