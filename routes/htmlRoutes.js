@@ -20,6 +20,10 @@ module.exports = function(app) {
     res.render("search");
   });
 
+  app.get("/matches", function(req, res) {
+    res.render("matches");
+  });
+
   app.get("/chat", function(req, res) {
     console.log("hello?");
     res.render("chats");
