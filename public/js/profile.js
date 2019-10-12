@@ -1,32 +1,13 @@
 /* eslint-disable */
 
-console.log(
-    //* ***************************************************************
-    //
-    //                        ---                                     
-    //                     -        --
-    //                 --( /     \ )XXXXXXXXXXXXX
-    //             --XXX(   O   O  )XXXXXXXXXXXXXXX-              
-    //            /XXX(       U     )        XXXXXXX\               
-    //          /XXXXX(              )--   XXXXXXXXXXX\             
-    //         /XXXXX/ (      O     )   XXXXXX   \XXXXX\
-    //         XXXXX/   /            XXXXXX   \   \XXXXX----        
-    //         XXXXXX  /          XXXXXX         \  ----  -         
-    // ---     XXX  /          XXXXXX      \           ---        
-    //   --  --  /      /\  XXXXXX            /     ---=         
-    //     -        /    XXXXXX              '--- XXXXXX         
-    //       --\/XXX\ XXXXXX                      /XXXXX         
-    //         \XXXXXXXXX                        /XXXXX/
-    //          \XXXXXX                         /XXXXX/         
-    //            \XXXXX--  /                -- XXXX/       
-    //             --XXXXXXX---------------  XXXXX--         
-    //                \XXXXXXXXXXXXXXXXXXXXXXXX-            
-    //                  --XXXXXXXXXXXXXXXXXX-
-    //
-    //
-    //* ***************************************************************
-);
+// Document on Ready
+$(document).ready(function () {
 
+    console.log("Document Ready...");
+    // Load Data
+
+    
+});
 
 // Update User Profile Function
 function updateProfile(event) {
@@ -38,6 +19,17 @@ function updateProfile(event) {
     let zipcode = $("#zip").val();
     let searchRadius = $("#radius").val();
     let bio = $("#bio").val();
+
+    // Log Values
+    console.log(birthdate);
+    console.log(firstName);
+    console.log(lastName);
+    console.log(email);
+    console.log(username);
+    console.log(zipcode);
+    console.log(searchRadius);
+    console.log(bio);
+
     $.ajax({
         type: 'PUT',
         url: "/userAccount",
@@ -57,3 +49,12 @@ function updateProfile(event) {
         console.log("Error: ", err);
     })
 }
+
+$("#submit").on("click", function () {
+
+    console.log("Updating User");
+
+    updateProfile();
+});
+
+
