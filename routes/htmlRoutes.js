@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable no-unused-vars */
 var db = require("../models");
 
@@ -13,6 +14,14 @@ module.exports = function(app) {
       });
     });
   });
+
+  // Get Search Functionality
+  app.get("/search", function(req, res) {
+    db.profiles.findAll().then(function(dbExamples) {
+      res.render("search");
+    });
+  });
+
   app.get("/chat", function(req, res) {
     console.log("hello?");
     res.render("chats");
