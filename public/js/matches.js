@@ -1,6 +1,10 @@
 /* eslint-disable */
 
 // Grab Users Successful Matches
+$(document).ready(function () {
+    getMatches();
+});
+
 function getMatches() {
     console.log("Getting Matches...");
     $.ajax({
@@ -21,7 +25,7 @@ function getMatches() {
                 matchid = result[i].id;
 
                 // Create Match Div
-                var div = $("div");
+                var div = $("<div>");
                 
                 // Define Name Tag
                 var nameTag = $("<h1>"+ name + "</h1>");
@@ -30,7 +34,7 @@ function getMatches() {
                 nameTag.attr("data-value", matchid);
 
                 // Append H1 with Match Name
-                div.append(nametag);
+                div.append(nameTag);
 
                 // Display Match Div
                 $('#matches').append(div);

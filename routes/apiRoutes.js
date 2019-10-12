@@ -118,6 +118,7 @@ module.exports = function(app) {
         profileID1: req.user.id
       }
     }).then(function(reply) {
+      console.log(reply);
       console.log("pt2");
       db.Matches.findAll({
         where: {
