@@ -10,7 +10,7 @@
     <title>{{msg}}</title>
 </head>
 
- <div class="wrapper">
+<div class="wrapper">
     <div class="container">
         <div class="col">
             <div class="row">
@@ -22,14 +22,15 @@
                                     <div class="col-12 col-sm-auto mb-3">
                                         <div class="mx-auto" style="width: 140px;">
                                             <div class="d-flex justify-content-center align-items-center rounded">
-                                                <img class="card-img-top rounded-circle" src="../styles/images/pkd.jpeg"
+                                                <img class="card-img-top rounded-circle" src={{user.picture}}
                                                     style="height: 140px; width: 140px" alt="Profile Photo">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                         <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{ourUser.firstName}} {{ourUser.lastName}}</h4>
+                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{ourUser.firstName}}
+                                                {{ourUser.lastName}}</h4>
                                             <p class="mb-0">{{user.displayName}}</p>
                                             <div class="mt-2">
                                                 <button class="btn btn-primary" type="button">
@@ -55,45 +56,49 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>First Name</label>
-                                                                <input class="form-control" type="text" name="fisrtName"
-                                                                    placeholder={{ourUser.firstName}} value={{ourUser.firstName}}>
+                                                                <input id="first" class="form-control" type="text"
+                                                                    name="fisrtName" placeholder={{ourUser.firstName}}
+                                                                    value={{ourUser.firstName}}>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Last Name</label>
-                                                                <input class="form-control" type="text" name="lastName"
-                                                                    placeholder={{ourUser.lastName}} value={{ourUser.lastName}}>
+                                                                <input id="last" class="form-control" type="text"
+                                                                    name="lastName" placeholder={{ourUser.lastName}}
+                                                                    value={{ourUser.lastName}}>
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Username</label>
-                                                                <input class="form-control" type="text" name="userName"
-                                                                    placeholder={{user.displayName}} value={{user.displayName}}>
+                                                                <input id="username" class="form-control" type="text"
+                                                                    name="userName" placeholder={{ourUser.email}}
+                                                                    value={{ourUser.email}}>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Date of Birth</label>
-                                                                <input type="date" class="form-control" id="exampleInputDOB1" placeholder="Date of Birth">
-                                                              </div>
+                                                                <input id="birthdate" type="date" class="form-control"
+                                                                    id="exampleInputDOB1" placeholder="Date of Birth">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Email</label>
-                                                                <input class="form-control" type="text" name="email"
-                                                                    placeholder={{user.displayName}}>
+                                                                <input id="email" class="form-control" type="text"
+                                                                    name="email" placeholder={{ourUser.email}}>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Zip Code</label>
-                                                            <input class="form-control" type="text" name="zipCode"
-                                                                placeholder={{ourUser.zipcode}}>
+                                                            <input id="zip" class="form-control" type="text"
+                                                                name="zipCode" placeholder={{ourUser.zipcode}}>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Radius</label>
-                                                                <input class="form-control" type="text" name="Radius"
-                                                                    placeholder={{ourUser.searchRadius}}>
+                                                                <input id="radius" class="form-control" type="text"
+                                                                    name="Radius" placeholder={{ourUser.searchRadius}}>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -101,7 +106,7 @@
                                                         <div class="col mb-3">
                                                             <div class="form-group">
                                                                 <label>About</label>
-                                                                <textarea class="form-control" rows="5"
+                                                                <textarea id="bio" class="form-control" rows="5"
                                                                     placeholder="My Bio"></textarea>
                                                             </div>
                                                         </div>
@@ -183,7 +188,17 @@
         </div>
     </div>
     <footer class="page-footer font-small black pt-4">
-            <div class="footer-copwright text-center py-3">
-                Copyright &copy; FunDeed 2019
-            </div>
-        </footer>
+        <div class="footer-copwright text-center py-3">
+            Copyright &copy; FunDeed 2019
+        </div>
+    </footer>
+
+    <script>
+        function updateProfile() {
+            let first = $("#first");
+            let last = $("#last");
+            let email = $("#email");
+            let username = $("#username");
+            let bio = $("#bio");
+        }
+    </script>
