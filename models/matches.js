@@ -18,8 +18,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    Success: DataTypes.BOOLEAN,
-    defaultValue: false
+    Success: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   });
   // Matches.associate = function(models) {
   //   Matches.belongsTo(models.User, {
