@@ -46,7 +46,6 @@ module.exports = function(app) {
     }).then(function(dbChats) {
       res.json(dbChats);
       console.log(dbChats);
-
     });
   });
 
@@ -62,7 +61,7 @@ module.exports = function(app) {
     });
   });
 
-  // more user details saved 
+  // more user details saved
   app.put("/userAccount", function(req, res) {
     // console.log(req.body);
     console.log(" More User Data:", req.user.id);
@@ -75,8 +74,14 @@ module.exports = function(app) {
       zipcode: parseInt(req.body.zipcode),
       searchRadius: parseInt(req.body.searchRadius)
     }, {
-      where: { auth_id: req.user.id }
-    }).then(function(result) { res.json(result); }).catch(function(err) { console.log("Errr", err); });
+      where: {
+        auth_id: req.user.id
+      }
+    }).then(function(result) {
+      res.json(result);
+    }).catch(function(err) {
+      console.log("Errr", err);
+    });
     // var dbQuery = "INSERT INTO User (firstName, lastName, birthdate, gender, zipcode, searchRadius, ) VALUES (?,?,?,?,?,?)";
 
     // connection.query(dbQuery, [req.body.username, req.body.email], function(err, result) {
