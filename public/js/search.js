@@ -133,6 +133,8 @@ $("#connectBtn").on("click", function(){
                 }
             }).then(function(reply){
                 console.log("Created", reply);
+                clearPosition();
+                displayUser();
             });
         }else{
             console.log("Entries found", reply[0].id);
@@ -144,6 +146,9 @@ $("#connectBtn").on("click", function(){
                 }
             }).then(function(reply){
                 console.log("Matched!",reply);
+                alert("You got a match!");
+                clearPosition();
+                displayUser();
             });
         }
     });

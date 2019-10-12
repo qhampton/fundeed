@@ -31,6 +31,11 @@
 
 $(document).ready(function () {
     getChat();
+
+    $("#submit").on("click",function(req,res){
+        let message = $("#comment").val();
+        postChat(message);
+    });
 });
 
 
@@ -52,6 +57,7 @@ function postChat(message) {
             }
         }).then(function (reply) {
             console.log(reply);
+            document.location.reload();
         });
     });
 }
@@ -72,16 +78,23 @@ function getChat() {
             var comment = result[i].message;
             var user = result[i].user;
             // Create Match Div
-            var div = $("<div>");
+            var row = $("<div class='row'>");
+            var col = $("<div class='col-sm-12'>");
+            var div = $(`<div style="display: block;">`);
 
             // Define Name Tag
             var comments = $("<h6>" + user + ": " +comment + "</h6>");
 
             // Append H1 with Match Name
             div.append(comments);
-
+            col.append(div);
+            row.append(col);
             // Display Match Div
-            $('#chats').append(div);
+            $('#chats').append(row);
+            $('#chats').append("<br>");
+            $('#chats').append("<hr>");
+            
+            
 
         }
         console.log(result);
