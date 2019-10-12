@@ -32,6 +32,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   Profiles.associate = function(models) {
     Profiles.belongsTo(models.User, {
+      onDelete: "cascade",
       foreignKey: {
         allowNull: false
       }
