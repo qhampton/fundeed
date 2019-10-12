@@ -52,11 +52,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    bio: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
-    },
+    bio: DataTypes.TEXT,
     lastLogin: {
       type: DataTypes.STRING
     },
