@@ -12,14 +12,15 @@ module.exports = function(app) {
   });
   // all user profiles with search criteria -doesn't work
   app.get("/users/profile", function(req, res) {
+    console.log("going into route");
     db.User.findAll({
       where: {
         id: req.params.auth_id
       },
       include: [db.Profiles]
-    }).then(function(dbProfile) {
-      console.log(dbProfile);
-      res.json(dbProfile);
+    }).then(function(dbProfiles) {
+      console.log(dbProfiles);
+      res.json(dbProfiles);
     });
   });
 
