@@ -26,15 +26,18 @@ router.get(
 router.get("/callback", function(req, res, next) {
   passport.authenticate("auth0", function(err, user, info) {
     if (err) {
+      console.log("HEROKY");
       return next(err);
     }
     if (!user) {
+      console.log("HEROKUUU");
       return res.redirect("/login");
     }
     req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
+      console.log("Let's do this");
       const returnTo = req.session.returnTo;
       delete req.session.returnTo;
       db.User.findAll({
