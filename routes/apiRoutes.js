@@ -78,6 +78,7 @@ module.exports = function(app) {
       lastName: req.body.lastName,
       firstName: req.body.firstName,
       birthdate: req.body.birthdate,
+      email: req.body.email,
       zipcode: parseInt(req.body.zipcode),
       searchRadius: parseInt(req.body.searchRadius)
     }, {

@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    lastTime: DataTypes.TIME,
+    lastTime: DataTypes.STRING,
     message: {
       type: DataTypes.TEXT,
       allowNull: false,

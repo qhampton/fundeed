@@ -86,19 +86,22 @@
                                                             <div class="form-group">
                                                                 <label>Email</label>
                                                                 <input id="email" class="form-control" type="text"
-                                                                    name="email" placeholder={{ourUser.email}}>
+                                                                    name="email" placeholder={{ourUser.email}}
+                                                                    value={{ourUser.email}}>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Zip Code</label>
                                                             <input id="zip" class="form-control" type="text"
-                                                                name="zipCode" placeholder={{ourUser.zipcode}}>
+                                                                name="zipCode" placeholder={{ourUser.zipcode}}
+                                                                value={{ourUser.zipcode}}>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Radius</label>
                                                                 <input id="radius" class="form-control" type="text"
-                                                                    name="Radius" placeholder={{ourUser.searchRadius}}>
+                                                                    name="Radius" placeholder={{ourUser.searchRadius}}
+                                                                    value={{ourUser.searchRadius}}>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -172,7 +175,8 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col d-flex justify-content-end">
-                                                        <button class="btn btn-primary" type="submit">Save
+                                                        <button class="btn btn-primary" type="submit"
+                                                            onclick="updateProfile(event)">Save
                                                             Changes</button>
                                                     </div>
                                                 </div>
@@ -194,11 +198,32 @@
     </footer>
 
     <script>
-        function updateProfile() {
-            let first = $("#first");
-            let last = $("#last");
-            let email = $("#email");
-            let username = $("#username");
-            let bio = $("#bio");
+        function updateProfile(event) {
+            event.preventDefault();
+            let firstName = $("#first").val();
+            let lastName = $("#last").val();
+            let email = $("#email").val();
+            let username = $("#username").val();
+            let zipcode = $("#zip").val();
+            let searchRadius = $("#radius").val();
+            let bio = $("#bio").val();
+            console.log(first, last, email, username, bio);
+            $.ajax({
+            type: 'PUT',
+            url: "/api/userAccount",
+            data:{
+                username,
+                lastName,
+                firstName,
+                searchRadius,
+                birthdate: "01/01/1990",
+                zipcode,
+                email
+            }
+        }).then(function(result){
+            console.log("Success: ", result);
+        }).catch(function(err){
+            console.log("Error: ",err);
+        })
         }
     </script>

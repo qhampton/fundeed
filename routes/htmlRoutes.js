@@ -4,11 +4,9 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/user", function(req, res) {
-    console.log("hello?", req.user.id, req.user.displayName);
     db.User.findAll({where: {
       auth_id: req.user.id
     }}).then(function(dbExamples) {
-      console.log("hello", dbExamples[0]);
       res.render("profile", {
         msg: "Welcome!",
         ourUser: dbExamples[0].dataValues
