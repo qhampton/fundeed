@@ -1,34 +1,41 @@
 /* eslint-disable */
 
-console.log(
-    //* ***************************************************************
-    //
-    //                        ---                                     
-    //                     -        --
-    //                 --( /     \ )XXXXXXXXXXXXX
-    //             --XXX(   O   O  )XXXXXXXXXXXXXXX-              
-    //            /XXX(       U     )        XXXXXXX\               
-    //          /XXXXX(              )--   XXXXXXXXXXX\             
-    //         /XXXXX/ (      O     )   XXXXXX   \XXXXX\
-    //         XXXXX/   /            XXXXXX   \   \XXXXX----        
-    //         XXXXXX  /          XXXXXX         \  ----  -         
-    // ---     XXX  /          XXXXXX      \           ---        
-    //   --  --  /      /\  XXXXXX            /     ---=         
-    //     -        /    XXXXXX              '--- XXXXXX         
-    //       --\/XXX\ XXXXXX                      /XXXXX         
-    //         \XXXXXXXXX                        /XXXXX/
-    //          \XXXXXX                         /XXXXX/         
-    //            \XXXXX--  /                -- XXXX/       
-    //             --XXXXXXX---------------  XXXXX--         
-    //                \XXXXXXXXXXXXXXXXXXXXXXXX-            
-    //                  --XXXXXXXXXXXXXXXXXX-
-    //
-    //
-    //* ***************************************************************
-);
+// console.log(
+//* ***************************************************************
+//
+//                        ---                                     
+//                     -        --
+//                 --( /     \ )XXXXXXXXXXXXX
+//             --XXX(   O   O  )XXXXXXXXXXXXXXX-              
+//            /XXX(       U     )        XXXXXXX\               
+//          /XXXXX(              )--   XXXXXXXXXXX\             
+//         /XXXXX/ (      O     )   XXXXXX   \XXXXX\
+//         XXXXX/   /            XXXXXX   \   \XXXXX----        
+//         XXXXXX  /          XXXXXX         \  ----  -         
+// ---     XXX  /          XXXXXX      \           ---        
+//   --  --  /      /\  XXXXXX            /     ---=         
+//     -        /    XXXXXX              '--- XXXXXX         
+//       --\/XXX\ XXXXXX                      /XXXXX         
+//         \XXXXXXXXX                        /XXXXX/
+//          \XXXXXX                         /XXXXX/         
+//            \XXXXX--  /                -- XXXX/       
+//             --XXXXXXX---------------  XXXXX--         
+//                \XXXXXXXXXXXXXXXXXXXXXXXX-            
+//                  --XXXXXXXXXXXXXXXXXX-
+//
+//
+//* ***************************************************************
+// );
 
 /* eslint-disable */
-function postChat(message){
+
+$(document).ready(function () {
+    getChat();
+});
+
+
+
+function postChat(message) {
     let id = $("#secret").attr("matches");
     $.ajax({
         type: 'GET',
@@ -37,59 +44,94 @@ function postChat(message){
         let name = reply.firstName;
         $.ajax({
             type: 'POST',
-            url: 'api/chat',
+            url: '/api/chat',
             data: {
                 user: name,
                 message,
                 MatchId: id
             }
-        }).then(function(reply){
+        }).then(function (reply) {
             console.log(reply);
         });
     });
 }
+
+function getChat() {
+    let id = $("#secret").attr("matches");
+    $.ajax({
+        type: 'GET',
+        url: '/api/chat',
+        data: {
+            id
+        }
+    }).then(function (result) {
+        // Loop through Matches
+        for (i = 0; i < result.length; i++) {
+
+            // Grab Chat Information
+            var comment = result[i].message;
+            var user = result[i].user;
+            // Create Match Div
+            var div = $("<div>");
+
+            // Define Name Tag
+            var comments = $("<h6>" + user + ": " +comment + "</h6>");
+
+            // Append H1 with Match Name
+            div.append(comments);
+
+            // Display Match Div
+            $('#chats').append(div);
+
+        }
+        console.log(result);
+    }).catch(function (err) {
+        console.log(err);
+    });
+}
+
 // Grab Users Successful Matches
 function getMatches() {
     console.log("Getting Chats...");
     $.ajax({
         type: 'GET',
         url: "/api/matches/success",
-    }).then(function(result){
+    }).then(function (result) {
         let idList = [];
-        result.forEach(function(content){
+        result.forEach(function (content) {
             idList.push(content.id);
         });
-        console.log("Success: ",idList);
+        console.log("Success: ", idList);
         $.ajax({
             type: 'GET',
             url: '/api/chats',
-            
+
         })
-            // On success display matches
+        // On success display matches
 
-            // Loop through Matches
-            for(i=0; i<result.length; i++){
+        // Loop through Matches
+        for (i = 0; i < result.length; i++) {
 
-                // Grab Chat Information
-                var comment = result[i].comment;
+            // Grab Chat Information
+            var comment = result[i].comment;
 
-                // Create Match Div
-                var div = $("div");
-                
-                // Define Name Tag
-                var comments = $("<h6>"+ comment + "</h6>");
+            // Create Match Div
+            var div = $("div");
 
-                // Append H1 with Match Name
-                div.append(comments);
+            // Define Name Tag
+            var comments = $("<h6>" + comment + "</h6>");
 
-                // Display Match Div
-                $('#chats').append(div);
+            // Append H1 with Match Name
+            div.append(comments);
 
-            }
+            // Display Match Div
+            $('#chats').append(div);
 
-    }).catch(function(err){
+        }
 
-        console.log("Error: ",err);
+    }).catch(function (err) {
+
+        console.log("Error: ", err);
 
     });
 }

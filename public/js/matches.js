@@ -52,6 +52,10 @@ function getMatches() {
                 data: {
                     id: matchID
                 }
+            }).then(function(reply){
+
+            }).catch(function(err){
+                console.log("ERROR",err);
             });
         });
     }).catch(function (err) {
