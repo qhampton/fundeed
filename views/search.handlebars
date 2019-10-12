@@ -5,9 +5,9 @@
 
 {{!-- Navigation --}}
 <ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="/user">Profile</a>
-  </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/user">Profile</a>
+    </li>
 </ul>
 
 {{!-- Jumbotron --}}
@@ -27,14 +27,14 @@
             {{!-- Form --}}
             <form>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Users Bio</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label id="label" for="bio"></label>
+                    <textarea class="form-control" id="bio" user-id="" rows="3"></textarea>
                 </div>
             </form>
 
-            <button type="button" class="btn btn-warning">PASS</button>
+            <button type="button" id="passBtn" class="btn btn-warning">PASS</button>
 
-            <button type="button" class="btn btn-success" style="float: right;">Connect</button>
+            <button type="button" id="connectBtn" class="btn btn-success" style="float: right;">Connect</button>
 
         </div>
         {{!-- Side --}}

@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+let allUsers = [];
 // Zip Function
 function getLangLat(USERZIP, RADIUS) {
     var api =
@@ -51,13 +51,16 @@ function allZips(ziplist) {
     $.ajax({
         type: 'GET',
         url: "/api/search/users",
-        data:{ ziplist: ziplist
+        data: {
+            ziplist: ziplist
         }
-    }).then(function(result){
+    }).then(function (result) {
         console.log("Success: ", result);
-    }).catch(function(err){
-        console.log("Error: ",err);
-    })
+        allUsers = result;
+        check();
+    }).catch(function (err) {
+        console.log("Error: ", err);
+    });
 };
 
 // When Document Loads -- Find Users within the requested Zip Code Ran
@@ -78,5 +81,69 @@ $(document).ready(function () {
         //Get Zipcode Function
         getLangLat(reply.zipcode, reply.searchRadius);
     });
+});
 
+function check() {
+    console.log("Global Array", allUsers);
+    displayUser();
+}
+
+function displayUser() {
+    if (allUsers.length === 0) {
+        $("#label").text("No User");
+        $("#bio").val("No users in your area. Try again later.");
+    } else {
+        $("#label").text(allUsers[0].firstName + "'s User Bio");
+        $("#bio").val(allUsers[0].bio);
+        $("#bio").attr('user-id', allUsers[0].auth_id);
+    }
+}
+
+function clearPosition() {
+    allUsers.shift();
+    console.log(allUsers);
+}
+
+$("#passBtn").on("click", function () {
+    console.log("PASS");
+    clearPosition();
+    displayUser();
+});
+
+$("#connectBtn").on("click", function(){
+    console.log("Start connect");
+    let id = $("#bio").attr('user-id');
+    console.log(id);
+    $.ajax({
+        type: 'GET',
+        url: '/api/matches',
+        data:{
+            auth_id: id
+        }
+    }).then(function(reply){
+        console.log("Reply",reply);
+        if(reply.length === 0){
+            console.log("No entries found");
+            $.ajax({
+                type: 'POST',
+                url: '/api/matches',
+                data:{
+                    auth_id: $("#bio").attr('user-id')
+                }
+            }).then(function(reply){
+                console.log("Created", reply);
+            });
+        }else{
+            console.log("Entries found", reply[0].id);
+            $.ajax({
+                type: 'PUT',
+                url: '/api/matches',
+                data:{
+                    id: reply[0].id
+                }
+            }).then(function(reply){
+                console.log("Matched!",reply);
+            });
+        }
+    });
 });

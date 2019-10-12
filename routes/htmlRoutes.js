@@ -17,9 +17,7 @@ module.exports = function(app) {
 
   // Get Search Functionality
   app.get("/search", function(req, res) {
-    db.profiles.findAll().then(function(dbExamples) {
-      res.render("search");
-    });
+    res.render("search");
   });
 
   app.get("/chat", function(req, res) {
