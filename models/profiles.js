@@ -14,31 +14,21 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     categoryType: {
-      type: DataTypes.ENUM,
-      values: [
-        "Technology",
-        "Outdoor Activites",
-        "Indoor Activites",
-        "Photography",
-        "Food",
-        "Nightlife",
-        "Music"
-      ]
+      type: DataTypes.STRING,
+      validate: {
+        len: [1]
+      }
     },
     about: {
       type: DataTypes.TEXT,
       allowNull: false,
       len: [1]
-    },
-    lookingFor: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
-    },
-    match: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
     }
+    // lookingFor: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false,
+    //   len: [1]
+    // }
   });
   console.log("Start associate");
   Profiles.associate = function(models) {
