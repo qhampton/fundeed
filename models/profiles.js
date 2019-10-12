@@ -9,10 +9,6 @@ module.exports = function(sequelize, DataTypes) {
     auth_id: {
       type: DataTypes.STRING,
       allowNull: false,
-      references: {
-        model: 'User',
-        key: 'auth_id'
-      },
       validate: {
         len: [1]
       }
