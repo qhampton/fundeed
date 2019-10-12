@@ -1,20 +1,28 @@
-   <a class="nav-link js-scroll-trigger" onclick="testChatPost()">Sign Up</a>
-                
+<a class="nav-link js-scroll-trigger" onclick="testChatPost()">Sign Up</a>
+
 
 
 <script>
     function testChatPost() {
         console.log("attempting chat post");
+
         $.ajax({
-            type: 'POST',
-            url: "/api/chat",
-            data:{
-                message: "Ayo does this work?"
-            }
-        }).then(function(result){
-            console.log("Success: ", result);
-        }).catch(function(err){
-            console.log("Error: ",err);
-        })
+            type: 'GET',
+            url: "/api/user"
+        }).then(function (reply) {
+            console.log("Reply: ", reply);
+            $.ajax({
+                type: 'POST',
+                url: "/api/chat",
+                data: {
+                    user: reply.firstName + " " + reply.lastName,
+                    message: "Ayo does this work?"
+                }
+            }).then(function (result) {
+                console.log("Success: ", result);
+            }).catch(function (err) {
+                console.log("Error: ", err);
+            });
+        });
     }
 </script>

@@ -4,9 +4,9 @@ dotenv.config();
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/examples", function(req, res) {
-    db.User.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  app.get("/api/user", function(req, res) {
+    db.User.findAll({where: {auth_id: req.user.id}}).then(function(dbExamples) {
+      res.json(dbExamples[0]);
       console.log("log");
     });
   });
@@ -51,11 +51,11 @@ module.exports = function(app) {
 
   app.post("/chat", function(req, res) {
     db.Chats.create({
-      chatID: 1,
       matchID: 666,
+      user: req.body.user,
       lastTime: Date.now(),
-      message: req.body.message,
-      include: [db.matches]
+      message: req.body.message
+      // include: [db.matches]
     }).then(function(dbUser) {
       res.json(dbUser);
     });
@@ -71,6 +71,7 @@ module.exports = function(app) {
       lastName: req.body.lastName,
       firstName: req.body.firstName,
       birthdate: req.body.birthdate,
+      email: req.body.email,
       zipcode: parseInt(req.body.zipcode),
       searchRadius: parseInt(req.body.searchRadius)
     }, {
