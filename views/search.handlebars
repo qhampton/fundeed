@@ -1,47 +1,75 @@
 <head>
     <link rel="stylesheet" href="/styles/style.css" media="screen" title="no title" charset="utf-8">
-    <title>{{msg}}</title>
+    <title>Connect/Search Page</title>
 </head>
 
-{{!-- Navigation --}}
-<ul class="nav">
-    <li class="nav-item">
-        <a class="nav-link active" href="/user">Profile</a>
-    </li>
-</ul>
+{{!-- Navbar --}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/user">Fundeed</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
 
-{{!-- Jumbotron --}}
-<div class="jumbotron jumbotron-fluid">
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link" href="/user">Profile</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/search">Connect <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/matches">Matches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">logout</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+{{!-- Add Break --}}
+<br><br>
+
+{{!-- Framework --}}
+<div class="wrapper">
     <div class="container">
-        <h1 class="display-4" style="align-content: center;">Fundeed</h1>
-        <p class="lead">Time to Connect! Press the PASS button to not connect with this person and press CONNECT to try and Match with them!</p>
-    </div>
-</div>
+        <div class="col">
+            <div class="row">
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body" class="pageBody">
 
-<div class="container">
-    <div class="row">
-        {{!-- Side --}}
-        <div class="col-sm-2"></div>
-        {{!-- Content --}}
-        <div class="col-sm-8">
-            {{!-- Form --}}
-            <form>
-                <div class="form-group">
-                    <label id="label" for="bio"></label>
-                    <textarea class="form-control" id="bio" user-id="" rows="3"></textarea>
+                            {{!-- Bio/Connect --}}
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {{!-- Form --}}
+                                        <form>
+                                            <div class="form-group">
+                                                <label id="label" for="bio"></label>
+                                            <textarea class="form-control" id="bio" user-id="" rows="3"></textarea>
+                                            </div>
+                                        </form>
+
+                                        <button type="button" id="passBtn" class="btn btn-warning">PASS</button>
+
+                                        <button type="button" id="connectBtn" class="btn btn-success" style="float: right;">Connect</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{!--END Bio/Connect  --}}
+                            
+                        </div>
+                    </div>
                 </div>
-            </form>
-
-            <button type="button" id="passBtn" class="btn btn-warning">PASS</button>
-
-            <button type="button" id="connectBtn" class="btn btn-success" style="float: right;">Connect</button>
-
+            </div>
         </div>
-        {{!-- Side --}}
-        <div class="col-sm-2"></div>
     </div>
 </div>
+{{!-- End Framework --}}
 
+{{!-- Footer --}}
 <footer class="page-footer font-small black pt-4">
     <div class="footer-copwright text-center py-3">
         Copyright &copy; FunDeed 2019

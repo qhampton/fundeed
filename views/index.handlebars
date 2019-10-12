@@ -41,24 +41,13 @@
         Copyright &copy; FunDeed 2019
     </div>
 </footer>
-<script>
-    function testPut() {
-        console.log("attempting put");
-        $.ajax({
-            type: 'PUT',
-            url: "/api/userAccount",
-            data:{
-                username: "bobDylan321",
-                lastName: "Dylan",
-                firstName: "Bob",
-                birthdate: "01/01/1990",
-                zipcode: 92111,
-                searchRadius: "10"
-            }
-        }).then(function(result){
-            console.log("Success: ", result);
-        }).catch(function(err){
-            console.log("Error: ",err);
-        });
-    }
+
+{{!-- JQUERY --}}
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
 </script>
+
+{{!-- Search Function --}}
+<script src="js/indexpage.js"></script>
