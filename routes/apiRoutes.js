@@ -43,10 +43,12 @@ module.exports = function(app) {
   app.post("/api/matches", function(req, res) {
     let userID = req.user.id;
     let matchID = req.body.auth_id;
+    let name = req.body.name;
     db.Matches.create({
       profileID1: userID,
       profileID2: matchID,
-      matching: true
+      matching: true,
+      profileID: name
     }).then(function(reply) {
       res.json(reply);
     });
