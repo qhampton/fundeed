@@ -1,0 +1,55 @@
+<head>
+    <link rel="stylesheet" href="/styles/style.css" media="screen" title="no title" charset="utf-8">
+    <title></title>
+</head>
+
+{{!-- Navigation --}}
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href="/user">Profile</a>
+  </li>
+</ul>
+
+{{!-- Jumbotron --}}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4" style="align-content: center;">Matches</h1>
+        <p class="lead">Here are your Matches</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        {{!-- Side --}}
+        <div class="col-sm-2"></div>
+        {{!-- Content --}}
+        <div class="col-sm-8">
+            {{!-- HERE WE DYNAMICALLY CREATE QUERIED MATCHES --}}
+
+            <div class="container">
+                <div class="row" id="matches">
+                </div>
+            </div>
+
+        </div>
+        {{!-- Side --}}
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+
+<footer class="page-footer font-small black pt-4">
+    <div class="footer-copwright text-center py-3">
+        Copyright &copy; FunDeed 2019
+    </div>
+</footer>
+
+
+{{!-- JQUERY --}}
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+</script>
+
+{{!-- Search Function --}}
+<script src="js/matches.js"></script>
