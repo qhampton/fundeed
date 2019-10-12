@@ -56,14 +56,19 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/search/users", function(req, res) {
-    let zipArray = req.body.ziplist.map(zip => parseInt(zip));
+  app.get("/api/search/users/", function(req, res) {
+    console.log("FUCK YOU");
+    let zipArray = req.query.ziplist;
+    console.log(zipArray);
     db.User.findAll({
       where: {
         zipcode: zipArray
       }
     }).then(function(allUsers) {
+      console.log("THIS IS THE RESULT", allUsers);
       res.json(allUsers);
+    }).catch(function(err) {
+      console.log(err);
     });
   });
 };
