@@ -6,6 +6,13 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       allowNull: false
     },
+    auth_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
     profileID1: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -28,6 +35,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   Matches.associate = function(models) {
     Matches.belongsTo(models.Profiles, {
+      onDelete: "cascade",
       foreignKey: {
         allowNull: false
       }
