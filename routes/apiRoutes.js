@@ -27,7 +27,8 @@ module.exports = function(app) {
   });
 
   app.put("/api/matches", function(req, res) {
-    let matchId = req.body.matchID;
+    let matchId = req.body.id;
+    console.log("PUTTING");
     db.Matches.update({
       Success: true
     }, {
@@ -45,7 +46,7 @@ module.exports = function(app) {
     db.Matches.create({
       profileID1: userID,
       profileID2: matchID,
-      match: true
+      matching: true
     }).then(function(reply) {
       res.json(reply);
     });
@@ -78,6 +79,7 @@ module.exports = function(app) {
       firstName: req.body.firstName,
       birthdate: req.body.birthdate,
       email: req.body.email,
+      bio: req.body.bio,
       zipcode: parseInt(req.body.zipcode),
       searchRadius: parseInt(req.body.searchRadius)
     }, {

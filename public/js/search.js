@@ -128,18 +128,18 @@ $("#connectBtn").on("click", function(){
                 type: 'POST',
                 url: '/api/matches',
                 data:{
-                    auth_id: $("#bio").attr('user-id', allUsers[0].auth_id)
+                    auth_id: $("#bio").attr('user-id')
                 }
             }).then(function(reply){
                 console.log("Created", reply);
             });
         }else{
-            console.log("Entries found");
+            console.log("Entries found", reply[0].id);
             $.ajax({
                 type: 'PUT',
                 url: '/api/matches',
                 data:{
-                    matchID: reply.matchID
+                    id: reply[0].id
                 }
             }).then(function(reply){
                 console.log("Matched!",reply);

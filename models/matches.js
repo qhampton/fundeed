@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   var Matches = sequelize.define("Matches", {
     profileID1: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     profileID2: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     categoryType: {
@@ -21,6 +21,9 @@ module.exports = function(sequelize, DataTypes) {
     Success: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+    profileID: {
+      type: DataTypes.STRING
     }
   });
   // Matches.associate = function(models) {
