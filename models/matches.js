@@ -15,18 +15,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     categoryType: {
-      type: DataTypes.ENUM,
-      values: [
-        "Technology",
-        "Outdoor Activites",
-        "Indoor Activited",
-        "Photography",
-        "Food",
-        "Nightlife",
-        "Music"
-      ]
+      type: DataTypes.STRING,
+      validate: {
+        len: [1]
+      }
     },
-
+    match: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
     matchScore: DataTypes.INTEGER
   });
   Matches.associate = function(models) {
