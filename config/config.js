@@ -5,7 +5,8 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: "project2DB",
     host: "localhost",
-    dialect: "mysql"
+    dialect: "mysql",
+    port: "3306"
   },
   test: {
     username: "root",
