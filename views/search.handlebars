@@ -1,15 +1,9 @@
-{{!-- <h1>{{user.nickname}}</h1>
-<h1>{{user.displayName}}</h1>
-<h1>{{user.user_id}}</h1>
-<h1>{{user.nickname}}</h1>
-<h1>{{test2}}</h1> --}}
-
-
 <head>
     <link rel="stylesheet" href="/styles/style.css" media="screen" title="no title" charset="utf-8">
     <title>{{msg}}</title>
 </head>
 
+{{!-- Navigation --}}
 <ul class="nav">
     <li class="nav-item">
         <a class="nav-link active" href="/user">Profile</a>
@@ -20,87 +14,22 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4" style="align-content: center;">Fundeed</h1>
-        <p class="lead">Time to Connect! Press the PASS button to not connect with this person and press CONNECT to try
-            and Match with them!</p>
-
-        <div class="container">
-            <div class="row">
-
-                {{!-- Side --}}
-                <div class="col-sm-2"></div>
-                {{!-- Content --}}
-                <div class="col-sm-8">
-
-                    {{!-- Form --}}
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Users Bio</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                    </form>
-
-                    <button type="button" class="btn btn-warning">PASS</button>
-
-                    <button type="button" class="btn btn-success" style="float: right;">Connect</button>
-
-                </div>
-                {{!-- Side --}}
-                <div class="col-sm-2"></div>
-            </div>
-        </div>
+        <p class="lead">Time to Connect! Press the PASS button to not connect with this person and press CONNECT to try and Match with them!</p>
     </div>
 </div>
-
 
 <footer class="page-footer font-small black pt-4">
     <div class="footer-copwright text-center py-3">
         Copyright &copy; FunDeed 2019
     </div>
 </footer>
-<script src="/js/zipRadius.js"></script>
-<script>
-    $.ajax({
-        type: 'GET',
-        url: "/api/user"
-    }).then(function (reply) {
-        // reply is the complete user object from mySQL
-        //console.log("Reply: ", reply);
-        getLangLat(reply.zipcode);
-    });
-    
 
-
-
-
-
-
-
-    function updateProfile(event) {
-        event.preventDefault();
-        let birthdate = $("#birthdate").val();
-        let firstName = $("#first").val();
-        let lastName = $("#last").val();
-        let email = $("#email").val();
-        let username = $("#username").val();
-        let zipcode = $("#zip").val();
-        let searchRadius = $("#radius").val();
-        let bio = $("#bio").val();
-        $.ajax({
-            type: 'PUT',
-            url: "/userAccount",
-            data: {
-                username,
-                lastName,
-                firstName,
-                searchRadius,
-                birthdate,
-                zipcode,
-                email
-            }
-        }).then(function (result) {
-            console.log("Success: ", result);
-        }).catch(function (err) {
-            console.log("Error: ", err);
-        })
-    }
+{{!-- JQUERY --}}
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
 </script>
+
+{{!-- Search Function --}}
+<script src="js/search.js"></script>
