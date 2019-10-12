@@ -1,11 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Matches = sequelize.define("Matches", {
-    matchID: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-      allowNull: false
-    },
     auth_id: {
       type: DataTypes.STRING,
       allowNull: false,
