@@ -13,13 +13,13 @@ module.exports = function(app) {
 
   // app.get("/api/matches", function(req, res) {
   //   let userID = req.user.id;
-    
+
   // });
 
   // app.get("/api/chat", function(req, res) {
 
   // });
-  
+
   app.post("/chat", function(req, res) {
     console.log("Hello?", req.user.id, req.body.user, req.body.message);
     db.Chats.create({
