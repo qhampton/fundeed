@@ -55,10 +55,19 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     status: {
-      type: DataTypes.ENUM,
-      values: ["active", "inactive"],
-      defaultValue: "active"
+      type: DataTypes.STRING,
+      defaultValue: "active",
+      validate: {
+        len: [1]
+      }
     }
   });
+
+  User.associate = function(models) {
+    User.hasMany(models.Profiles, {
+      onDelete: "cascade"
+    });
+  };
+
   return User;
 };
