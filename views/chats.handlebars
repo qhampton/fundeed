@@ -1,6 +1,5 @@
 <a class="nav-link js-scroll-trigger" onclick="testChatPost()">Sign Up</a>
 
-
 {{!-- JQUERY --}}
 <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -10,3 +9,28 @@
 
 {{!-- Search Function --}}
 <script src="js/chats.js"></script>
+
+<script>
+    function testChatPost() {
+        console.log("attempting chat post");
+
+        $.ajax({
+            type: 'GET',
+            url: "/api/user"
+        }).then(function (reply) {
+            console.log("Reply: ", reply);
+            $.ajax({
+                type: 'POST',
+                url: "/chat",
+                data: {
+                    user: reply.firstName + " " + reply.lastName,
+                    message: "Ayo does this work?"
+                }
+            }).then(function (result) {
+                console.log("Success: ", result);
+            }).catch(function (err) {
+                console.log("Error: ", err);
+            });
+        });
+    }
+</script>

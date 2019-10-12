@@ -1,24 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   var Matches = sequelize.define("Matches", {
-    matchID: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-      allowNull: false
-    },
-    auth_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
     profileID1: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     profileID2: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     categoryType: {
@@ -27,19 +14,25 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    match: {
+    matching: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    matchScore: DataTypes.INTEGER
+    Success: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    profileID: {
+      type: DataTypes.STRING
+    }
   });
-  Matches.associate = function(models) {
-    Matches.belongsTo(models.Profiles, {
-      onDelete: "cascade",
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+  // Matches.associate = function(models) {
+  //   Matches.belongsTo(models.User, {
+  //     onDelete: "cascade",
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
   return Matches;
 };
