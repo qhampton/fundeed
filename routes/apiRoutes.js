@@ -108,4 +108,26 @@ module.exports = function(app) {
       console.log(err);
     });
   });
+  app.get("/api/matches/success", function(req, res) {
+    console.log("Getting matches");
+    db.Matches.findAll({
+      where: {
+        Success: true,
+        profileID1: req.user.id
+      }
+    }).then(function(reply) {
+      console.log("pt2");
+      db.Matches.findAll({
+        where: {
+          Success: true,
+          profileID2: req.user.id
+        }
+      }).then(function(reply) {
+        console.log("Found :", reply);
+        res.json(reply);
+      }).catch(function(err) {
+        console.log(err);
+      });
+    });
+  });
 };
