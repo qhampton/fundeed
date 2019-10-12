@@ -111,18 +111,39 @@ $("#passBtn").on("click", function () {
 });
 
 $("#connectBtn").on("click", function(){
+    console.log("Start connect");
+    let id = $("#bio").attr('user-id');
+    console.log(id);
     $.ajax({
         type: 'GET',
-        url: '/api/matches'
+        url: '/api/matches',
+        data:{
+            auth_id: id
+        }
     }).then(function(reply){
+        console.log("Reply",reply);
         if(reply.length === 0){
+            console.log("No entries found");
             $.ajax({
                 type: 'POST',
                 url: '/api/matches',
                 data:{
                     auth_id: $("#bio").attr('user-id', allUsers[0].auth_id)
                 }
-            })
+            }).then(function(reply){
+                console.log("Created", reply);
+            });
+        }else{
+            console.log("Entries found");
+            $.ajax({
+                type: 'PUT',
+                url: '/api/matches',
+                data:{
+                    matchID: reply.matchID
+                }
+            }).then(function(reply){
+                console.log("Matched!",reply);
+            });
         }
     });
 });
