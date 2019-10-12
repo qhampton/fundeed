@@ -50,14 +50,17 @@ module.exports = function(app) {
   });
 
   app.post("/chat", function(req, res) {
+    console.log("Hello?", req.user.id, req.body.user, req.body.message);
     db.Chats.create({
       matchID: 666,
+      auth_id: req.user.id,
       user: req.body.user,
-      lastTime: Date.now(),
       message: req.body.message
       // include: [db.matches]
     }).then(function(dbUser) {
       res.json(dbUser);
+    }).catch(function(err) {
+      console.log(err);
     });
   });
 

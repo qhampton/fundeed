@@ -11,67 +11,84 @@
 </head>
 
 <ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="/user">Profile</a>
-  </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/user">Profile</a>
+    </li>
 </ul>
 
-        {{!-- Jumbotron --}}
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4" style="align-content: center;">Fundeed</h1>
-                <p class="lead">Time to Connect! Press the PASS button to not connect with this person and press CONNECT to try and Match with them!</p>
+{{!-- Jumbotron --}}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4" style="align-content: center;">Fundeed</h1>
+        <p class="lead">Time to Connect! Press the PASS button to not connect with this person and press CONNECT to try
+            and Match with them!</p>
 
-                <div class="container">
-    <div class="row">
+        <div class="container">
+            <div class="row">
 
-        {{!-- Side --}}
-        <div class="col-sm-2"></div>
-        {{!-- Content --}}
-        <div class="col-sm-8">
+                {{!-- Side --}}
+                <div class="col-sm-2"></div>
+                {{!-- Content --}}
+                <div class="col-sm-8">
 
-            {{!-- Form --}}
-            <form>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Users Bio</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    {{!-- Form --}}
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Users Bio</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </form>
+
+                    <button type="button" class="btn btn-warning">PASS</button>
+
+                    <button type="button" class="btn btn-success" style="float: right;">Connect</button>
+
                 </div>
-            </form>
-
-            <button type="button" class="btn btn-warning">PASS</button>
-
-            <button type="button" class="btn btn-success" style="float: right;">Connect</button>
-
-        </div>
-        {{!-- Side --}}
-        <div class="col-sm-2"></div>
-    </div>
-</div>
+                {{!-- Side --}}
+                <div class="col-sm-2"></div>
             </div>
         </div>
+    </div>
+</div>
 
 
-    <footer class="page-footer font-small black pt-4">
-        <div class="footer-copwright text-center py-3">
-            Copyright &copy; FunDeed 2019
-        </div>
-    </footer>
+<footer class="page-footer font-small black pt-4">
+    <div class="footer-copwright text-center py-3">
+        Copyright &copy; FunDeed 2019
+    </div>
+</footer>
+<script src="/js/zipRadius.js"></script>
+<script>
+    $.ajax({
+        type: 'GET',
+        url: "/api/user"
+    }).then(function (reply) {
+        // reply is the complete user object from mySQL
+        //console.log("Reply: ", reply);
+        getLangLat(reply.zipcode);
+    });
+    
 
-    <script>
-        function updateProfile(event) {
-            event.preventDefault();
-            let birthdate = $("#birthdate").val();
-            let firstName = $("#first").val();
-            let lastName = $("#last").val();
-            let email = $("#email").val();
-            let username = $("#username").val();
-            let zipcode = $("#zip").val();
-            let searchRadius = $("#radius").val();
-            let bio = $("#bio").val();
-            $.ajax({
+
+
+
+
+
+
+    function updateProfile(event) {
+        event.preventDefault();
+        let birthdate = $("#birthdate").val();
+        let firstName = $("#first").val();
+        let lastName = $("#last").val();
+        let email = $("#email").val();
+        let username = $("#username").val();
+        let zipcode = $("#zip").val();
+        let searchRadius = $("#radius").val();
+        let bio = $("#bio").val();
+        $.ajax({
             type: 'PUT',
             url: "/userAccount",
-            data:{
+            data: {
                 username,
                 lastName,
                 firstName,
@@ -80,10 +97,10 @@
                 zipcode,
                 email
             }
-        }).then(function(result){
+        }).then(function (result) {
             console.log("Success: ", result);
-        }).catch(function(err){
-            console.log("Error: ",err);
+        }).catch(function (err) {
+            console.log("Error: ", err);
         })
-        }
-    </script>
+    }
+</script>
