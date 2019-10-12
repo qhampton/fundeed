@@ -66,13 +66,13 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>First Name</label>
-                                                                <input id="first" class="form-control" type="text"
+                                                                <input id="firstName" class="form-control" type="text"
                                                                     name="firstName" placeholder={{ourUser.firstName}}
                                                                     value={{ourUser.firstName}}>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Last Name</label>
-                                                                <input id="last" class="form-control" type="text"
+                                                                <input id="lastName" class="form-control" type="text"
                                                                     name="lastName" placeholder={{ourUser.lastName}}
                                                                     value={{ourUser.lastName}}>
                                                             </div>
@@ -185,7 +185,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col d-flex justify-content-end">
-                                                        <button class="btn btn-primary" type="submit"
+                                                        <button class="btn btn-primary" type="submit" id="submit"
                                                             onclick="updateProfile(event)">Save
                                                             Changes</button>
                                                     </div>
