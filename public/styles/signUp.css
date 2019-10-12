@@ -1,0 +1,27 @@
+.body {
+    background: linear-gradient(to bottom, rgba(234, 83, 35, 0.3) 0%, rgba(245, 164, 137, 0.7) 0.5%, #ea5523 100%);
+
+}
+
+.wrapper {
+    background-color: #ea5523;
+}
+
+.btn {
+    background-color: #ea5523;
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito';
+    letter-spacing: 0.0625em;
+}
+
+footer {
+    padding: 5rem 0;
+    background-color:rgba(245, 164, 137, 0.7);
+}

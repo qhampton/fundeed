@@ -106,3 +106,13 @@ ul li:hover {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: #555;
 }
+
+body {
+    font-family: 'Nunito';
+    letter-spacing: 0.0625em;
+}
+
+footer {
+    padding: 5rem 0;
+    background-color:rgba(245, 164, 137, 0.7);
+}
