@@ -54,18 +54,50 @@ module.exports = function(app) {
     });
   });
 
-  // app.get("/api/chat", function(req, res) {
-
-  // });
-
   app.post("/chat", function(req, res) {
-    console.log("Hello?", req.user.id, req.body.user, req.body.message);
+    let id = req.body.id;
+    console.log("INSIDE:", id);
+    res.render("chats", id);
+  });
+
+  app.get("/api/chat", function(req, res) {
+    console.log("Getting matches");
+    let allMatches = [];
+    db.Matches.findAll({
+      where: {
+        Success: true,
+        profileID1: req.user.id
+      }
+    }).then(function(reply) {
+      console.log(reply);
+      reply.forEach(function(content) {
+        allMatches.push(content);
+      });
+      console.log("pt2");
+      db.Matches.findAll({
+        where: {
+          Success: true,
+          profileID2: req.user.id
+        }
+      }).then(function(reply) {
+        console.log("Found :", reply);
+        reply.forEach(function(content) {
+          allMatches.push(content);
+        });
+      }).then(function(reply) {
+        let final = allMatches.map(content => content.id);
+        console.log("ALL MATCHES: ", final);
+        res.json(final);
+      });
+    });
+  });
+
+  app.post("/api/chat", function(req, res) {
+    console.log("Hello?");
     db.Chats.create({
-      matchID: 666,
-      auth_id: req.user.id,
+      MatchId: req.body.MatchId,
       user: req.body.user,
       message: req.body.message
-      // include: [db.matches]
     }).then(function(dbUser) {
       res.json(dbUser);
     }).catch(function(err) {
@@ -112,6 +144,7 @@ module.exports = function(app) {
   });
   app.get("/api/matches/success", function(req, res) {
     console.log("Getting matches");
+    let allMatches = [];
     db.Matches.findAll({
       where: {
         Success: true,
@@ -119,6 +152,9 @@ module.exports = function(app) {
       }
     }).then(function(reply) {
       console.log(reply);
+      reply.forEach(function(content) {
+        allMatches.push(content);
+      });
       console.log("pt2");
       db.Matches.findAll({
         where: {
@@ -127,7 +163,10 @@ module.exports = function(app) {
         }
       }).then(function(reply) {
         console.log("Found :", reply);
-        res.json(reply);
+        reply.forEach(function(content) {
+          allMatches.push(content);
+        });
+        res.json(allMatches);
       }).catch(function(err) {
         console.log(err);
       });

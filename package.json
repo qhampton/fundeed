@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Project 2 Starter",
   "main": "server.js",
+  "engine": {
+    "node": "10.15.3"
+  },
   "scripts": {
     "start": "node server.js",
     "lint": "./node_modules/.bin/eslint --quiet .",
